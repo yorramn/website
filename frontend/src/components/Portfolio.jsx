@@ -243,45 +243,75 @@ const Portfolio = () => {
           </div>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {mockData.projects.map((project, index) => (
-              <Card key={index} className="hover:shadow-lg transition-shadow duration-300 border-0 shadow-md">
-                <CardHeader>
-                  <div className="flex justify-between items-start">
-                    <CardTitle className="text-xl font-bold text-gray-800">
-                      {project.name}
-                    </CardTitle>
-                    <div className="flex gap-2">
-                      {project.githubUrl && (
-                        <Button variant="ghost" size="sm" className="p-2">
-                          <Github className="h-4 w-4 text-gray-600" />
-                        </Button>
-                      )}
-                      {project.liveUrl && (
-                        <Button variant="ghost" size="sm" className="p-2">
-                          <ExternalLink className="h-4 w-4 text-gray-600" />
-                        </Button>
-                      )}
+            {isLoadingProjects ? (
+              <div className="col-span-full">
+                <LoadingSpinner size="lg" text="Carregando projetos do GitHub..." />
+              </div>
+            ) : projects.length > 0 ? (
+              projects.map((project, index) => (
+                <Card key={index} className="hover:shadow-lg transition-shadow duration-300 border-0 shadow-md">
+                  <CardHeader>
+                    <div className="flex justify-between items-start">
+                      <CardTitle className="text-xl font-bold text-gray-800">
+                        {project.name}
+                      </CardTitle>
+                      <div className="flex gap-2">
+                        {project.githubUrl && (
+                          <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
+                            <Button variant="ghost" size="sm" className="p-2">
+                              <Github className="h-4 w-4 text-gray-600" />
+                            </Button>
+                          </a>
+                        )}
+                        {project.liveUrl && (
+                          <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
+                            <Button variant="ghost" size="sm" className="p-2">
+                              <ExternalLink className="h-4 w-4 text-gray-600" />
+                            </Button>
+                          </a>
+                        )}
+                      </div>
                     </div>
-                  </div>
-                  <CardDescription className="text-gray-600">
-                    {project.description}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex flex-wrap gap-2">
-                    {project.technologies.map((tech, techIndex) => (
-                      <Badge 
-                        key={techIndex} 
-                        variant="secondary" 
-                        className="bg-gray-200 text-gray-700 hover:bg-orange-100"
-                      >
-                        {tech}
-                      </Badge>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
+                    <CardDescription className="text-gray-600">
+                      {project.description}
+                    </CardDescription>
+                    {(project.stars > 0 || project.forks > 0) && (
+                      <div className="flex gap-4 text-sm text-gray-500">
+                        {project.stars > 0 && (
+                          <div className="flex items-center gap-1">
+                            <Star className="h-3 w-3" />
+                            <span>{project.stars}</span>
+                          </div>
+                        )}
+                        {project.forks > 0 && (
+                          <div className="flex items-center gap-1">
+                            <Github className="h-3 w-3" />
+                            <span>{project.forks}</span>
+                          </div>
+                        )}
+                      </div>
+                    )}
+                  </CardHeader>
+                  <CardContent>
+                    <div className="flex flex-wrap gap-2">
+                      {project.technologies.map((tech, techIndex) => (
+                        <Badge 
+                          key={techIndex} 
+                          variant="secondary" 
+                          className="bg-gray-200 text-gray-700 hover:bg-orange-100"
+                        >
+                          {tech}
+                        </Badge>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              ))
+            ) : (
+              <div className="col-span-full text-center py-8">
+                <p className="text-gray-600">Nenhum projeto encontrado.</p>
+              </div>
+            )}
           </div>
         </div>
       </section>
