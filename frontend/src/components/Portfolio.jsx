@@ -482,10 +482,20 @@ const Portfolio = () => {
                 
                 <Button 
                   type="submit" 
-                  className="w-full bg-orange-600 hover:bg-orange-700 text-white py-3 rounded-lg font-semibold text-lg"
+                  disabled={isSubmittingForm}
+                  className="w-full bg-orange-600 hover:bg-orange-700 text-white py-3 rounded-lg font-semibold text-lg disabled:opacity-50"
                 >
-                  <Mail className="mr-2 h-5 w-5" />
-                  Enviar Mensagem
+                  {isSubmittingForm ? (
+                    <>
+                      <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
+                      Enviando...
+                    </>
+                  ) : (
+                    <>
+                      <Mail className="mr-2 h-5 w-5" />
+                      Enviar Mensagem
+                    </>
+                  )}
                 </Button>
               </form>
             </CardContent>
