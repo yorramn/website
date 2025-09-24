@@ -412,7 +412,7 @@ const Portfolio = () => {
         <div className="max-w-6xl mx-auto px-6">
           <div className="grid md:grid-cols-3 gap-8">
             <div>
-              <h3 className="text-xl font-bold mb-4">Yorram N.</h3>
+              <h3 className="text-xl font-bold mb-4">Yorramn</h3>
               <p className="text-gray-400 mb-4">
                 Desenvolvedor Full Stack especializado em soluções web escaláveis
               </p>
