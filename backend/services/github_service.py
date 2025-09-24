@@ -88,7 +88,7 @@ class GitHubService:
         
         # Common web technologies based on repo name and description
         name = repo.get('name', '').lower()
-        description = repo.get('description', '').lower()
+        description = (repo.get('description') or '').lower()
         
         # Backend technologies
         if any(term in name or term in description for term in ['laravel', 'php']):
