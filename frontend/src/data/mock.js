@@ -1,13 +1,13 @@
 const mockData = {
   profile: {
-    name: "Yorram N.",
+    name: "Yorramn",
     title: "Desenvolvedor Full Stack | Líder Técnico",
     bio: "Atleta nas horas vagas e entusiasta da programação, fissurado por aprender e ensinar, busco compartilhar meu conhecimento e contribuir em projetos OpenSource e privados.",
     avatar: "https://avatars.githubusercontent.com/yorramn?v=4",
     github: "https://github.com/yorramn",
     linkedin: "https://linkedin.com/in/yorramn",
     email: "yorramn.dev@gmail.com",
-    phone: "+55 (11) 99999-9999"
+    phone: "+55 (11) 98941-6584"
   },
   
   projects: [
