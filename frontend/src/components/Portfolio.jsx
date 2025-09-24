@@ -52,7 +52,7 @@ const Portfolio = () => {
 
   const openWhatsApp = () => {
     const message = "Olá, gostaria de fazer um orçamento.";
-    const whatsappUrl = `https://wa.me/5511999999999?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `https://wa.me/5511989416584?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, "_blank");
   };
 
