@@ -116,7 +116,7 @@ const Portfolio = () => {
               <div className="w-64 h-64 rounded-full overflow-hidden border-4 border-orange-500 shadow-2xl">
                 <img 
                   src={mockData.profile.avatar} 
-                  alt="Yorram N."
+                  alt="Yorramn"
                   className="w-full h-full object-cover"
                 />
               </div>
