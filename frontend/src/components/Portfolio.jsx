@@ -32,7 +32,34 @@ const Portfolio = () => {
     phone: "",
     message: ""
   });
+  const [projects, setProjects] = useState([]);
+  const [isLoadingProjects, setIsLoadingProjects] = useState(true);
+  const [isSubmittingForm, setIsSubmittingForm] = useState(false);
   const { toast } = useToast();
+
+  // Fetch GitHub repositories on component mount
+  useEffect(() => {
+    fetchGitHubRepos();
+  }, []);
+
+  const fetchGitHubRepos = async () => {
+    try {
+      setIsLoadingProjects(true);
+      const response = await apiService.getGitHubRepos();
+      setProjects(response.repos || []);
+    } catch (error) {
+      console.error('Error fetching repos:', error);
+      // Fallback to mock data if API fails
+      setProjects(mockData.projects);
+      toast({
+        title: "Aviso",
+        description: "Usando dados locais. Alguns projetos podem não estar atualizados.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoadingProjects(false);
+    }
+  };
 
   const handleInputChange = (e) => {
     setFormData({
