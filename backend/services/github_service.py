@@ -37,12 +37,12 @@ class GitHubService:
                 
                 processed_repo = {
                     'name': repo.get('name', ''),
-                    'description': repo.get('description', 'No description available'),
+                    'description': repo.get('description') or 'No description available',
                     'githubUrl': repo.get('html_url', ''),
                     'liveUrl': self._extract_live_url(repo),
                     'stars': repo.get('stargazers_count', 0),
                     'forks': repo.get('forks_count', 0),
-                    'language': repo.get('language', 'Unknown'),
+                    'language': repo.get('language') or 'Unknown',
                     'updated_at': repo.get('updated_at', ''),
                     'technologies': self._extract_technologies(repo),
                     'featured': self._is_featured_repo(repo)
