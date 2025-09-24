@@ -10,6 +10,7 @@ const mockData = {
     phone: "+55 (11) 98941-6584"
   },
   
+  // Fallback projects (used only if GitHub API fails)
   projects: [
     {
       name: "CV Creator",
@@ -17,7 +18,11 @@ const mockData = {
       technologies: ["PHP", "Laravel", "MySQL", "Bootstrap", "JavaScript"],
       githubUrl: "https://github.com/yorramn/cv-creator",
       liveUrl: null,
-      featured: true
+      featured: true,
+      stars: 0,
+      forks: 0,
+      language: "PHP",
+      updated_at: "2024-01-01T00:00:00Z"
     },
     {
       name: "Galactus Platform",
@@ -25,39 +30,11 @@ const mockData = {
       technologies: ["PHP", "Laravel", "Vue.js", "PostgreSQL", "Redis"],
       githubUrl: null,
       liveUrl: "https://ogalactus.com.br/",
-      featured: true
-    },
-    {
-      name: "API GraphQL Enterprise",
-      description: "API enterprise desenvolvida em GraphQL para integração de sistemas corporativos com alta performance e flexibilidade.",
-      technologies: ["PHP", "GraphQL", "Laravel", "PostgreSQL", "Docker"],
-      githubUrl: "https://github.com/yorramn/graphql-api",
-      liveUrl: null,
-      featured: false
-    },
-    {
-      name: "E-commerce Platform",
-      description: "Plataforma de e-commerce completa com sistema de pagamentos, gestão de estoque e painel administrativo.",
-      technologies: ["Laravel", "Vue.js", "Stripe", "MySQL", "Redis"],
-      githubUrl: "https://github.com/yorramn/ecommerce-platform",
-      liveUrl: null,
-      featured: false
-    },
-    {
-      name: "Task Management System",
-      description: "Sistema ágil de gerenciamento de tarefas implementando metodologias Scrum e Kanban para equipes de desenvolvimento.",
-      technologies: ["PHP", "Laravel", "React", "MySQL", "WebSockets"],
-      githubUrl: "https://github.com/yorramn/task-manager",
-      liveUrl: null,
-      featured: false
-    },
-    {
-      name: "Real-time Chat App",
-      description: "Aplicação de chat em tempo real com suporte a salas, notificações push e integração com diferentes provedores.",
-      technologies: ["Laravel", "WebSockets", "Redis", "Vue.js", "Pusher"],
-      githubUrl: "https://github.com/yorramn/realtime-chat",
-      liveUrl: null,
-      featured: false
+      featured: true,
+      stars: 0,
+      forks: 0,
+      language: "PHP",
+      updated_at: "2024-01-01T00:00:00Z"
     }
   ],
   
