@@ -68,15 +68,42 @@ const Portfolio = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Mock form submission
-    console.log("Form submitted:", formData);
-    toast({
-      title: "Mensagem enviada!",
-      description: "Entraremos em contato em breve.",
-    });
-    setFormData({ name: "", email: "", phone: "", message: "" });
+    
+    try {
+      setIsSubmittingForm(true);
+      
+      await apiService.sendContactForm(formData);
+      
+      toast({
+        title: "Mensagem enviada!",
+        description: "Obrigado pelo contato. Retornaremos em breve.",
+      });
+      
+      setFormData({ name: "", email: "", phone: "", message: "" });
+      
+    } catch (error) {
+      console.error('Error sending contact form:', error);
+      
+      let errorMessage = "Erro ao enviar mensagem. Tente novamente mais tarde.";
+      
+      if (error.response?.data?.detail) {
+        if (typeof error.response.data.detail === 'object') {
+          errorMessage = error.response.data.detail.message || errorMessage;
+        } else {
+          errorMessage = error.response.data.detail;
+        }
+      }
+      
+      toast({
+        title: "Erro ao enviar",
+        description: errorMessage,
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmittingForm(false);
+    }
   };
 
   const openWhatsApp = () => {
