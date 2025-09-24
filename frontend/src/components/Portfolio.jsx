@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button } from "./ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card";
 import { Badge } from "./ui/badge";
@@ -7,6 +7,7 @@ import { Textarea } from "./ui/textarea";
 import { Label } from "./ui/label";
 import { useToast } from "../hooks/use-toast";
 import { Toaster } from "./ui/toaster";
+import LoadingSpinner from "./LoadingSpinner";
 import { 
   Github, 
   Linkedin, 
@@ -22,6 +23,7 @@ import {
   Star
 } from "lucide-react";
 import mockData from "../data/mock";
+import { apiService } from "../services/api";
 
 const Portfolio = () => {
   const [formData, setFormData] = useState({
