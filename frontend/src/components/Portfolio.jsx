@@ -486,48 +486,111 @@ const Portfolio = () => {
             <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
               Empresas que Confiam no Nosso Serviço
             </h2>
-            <div className="w-20 h-1 bg-orange-500 mx-auto"></div>
+            <div className="w-20 h-1 bg-orange-500 mx-auto mb-6"></div>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Parcerias sólidas construídas através de resultados excepcionais e confiança mútua
+            </p>
+          </div>
+
+          {/* Trust Metrics */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
+            <div className="text-center">
+              <div className="text-3xl font-bold text-orange-600 mb-2">5+</div>
+              <div className="text-gray-600">Empresas Atendidas</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl font-bold text-orange-600 mb-2">15+</div>
+              <div className="text-gray-600">Projetos Entregues</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl font-bold text-orange-600 mb-2">100%</div>
+              <div className="text-gray-600">Satisfação</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl font-bold text-orange-600 mb-2">3+</div>
+              <div className="text-gray-600">Anos Experiência</div>
+            </div>
           </div>
           
-          <div className="grid md:grid-cols-3 lg:grid-cols-5 gap-8 items-center">
-            <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
-              <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-blue-800 rounded-lg flex items-center justify-center text-white font-bold text-xl mb-3">
-                G
+          {/* Companies Carousel */}
+          <div className="relative">
+            <div className="overflow-hidden" ref={emblaRef}>
+              <div className="flex">
+                {companies.map((company) => (
+                  <div key={company.id} className="flex-[0_0_100%] md:flex-[0_0_50%] lg:flex-[0_0_33.333%] pl-4">
+                    <Card className="h-full mx-2 hover:shadow-xl transition-all duration-300 border-0 shadow-md bg-white">
+                      <CardContent className="p-6">
+                        {/* Logo and Header */}
+                        <div className="flex items-center gap-4 mb-4">
+                          <div className={`w-16 h-16 bg-gradient-to-br ${company.gradient} rounded-lg flex items-center justify-center text-white font-bold text-2xl shadow-lg`}>
+                            {company.logo}
+                          </div>
+                          <div className="flex-1">
+                            <h3 className="text-xl font-bold text-gray-800">{company.name}</h3>
+                            <p className="text-orange-600 font-medium">{company.title}</p>
+                          </div>
+                        </div>
+                        
+                        {/* Description */}
+                        <p className="text-gray-600 text-sm mb-4 leading-relaxed">
+                          {company.description}
+                        </p>
+                        
+                        {/* Metrics and Duration */}
+                        <div className="flex justify-between items-center mb-4">
+                          <div className="flex items-center gap-2">
+                            <TrendingUp className="h-4 w-4 text-green-500" />
+                            <span className="text-sm font-semibold text-green-600">{company.metrics}</span>
+                          </div>
+                          <span className="text-xs text-gray-500">{company.duration}</span>
+                        </div>
+                        
+                        {/* Testimonial */}
+                        <div className="bg-gray-50 p-3 rounded-lg border-l-4 border-orange-500">
+                          <p className="text-sm text-gray-700 italic">"{company.testimonial}"</p>
+                        </div>
+                        
+                        {/* Trust Badge */}
+                        <div className="flex items-center justify-center mt-4">
+                          <div className="flex items-center gap-1 bg-green-100 px-3 py-1 rounded-full">
+                            <Shield className="h-4 w-4 text-green-600" />
+                            <span className="text-xs font-medium text-green-700">Projeto Concluído</span>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </div>
+                ))}
               </div>
-              <h3 className="font-semibold text-gray-800">Galactus</h3>
-              <p className="text-sm text-gray-600 text-center">Plataforma Empresarial</p>
             </div>
             
-            <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
-              <div className="w-16 h-16 bg-gradient-to-br from-green-600 to-green-800 rounded-lg flex items-center justify-center text-white font-bold text-xl mb-3">
-                TS
-              </div>
-              <h3 className="font-semibold text-gray-800">Tech Solutions</h3>
-              <p className="text-sm text-gray-600 text-center">Consultoria Técnica</p>
+            {/* Carousel Controls */}
+            <div className="flex justify-center gap-4 mt-8">
+              <Button
+                onClick={scrollPrev}
+                disabled={prevBtnDisabled}
+                className="bg-orange-600 hover:bg-orange-700 disabled:bg-gray-300 disabled:cursor-not-allowed text-white w-12 h-12 rounded-full p-0 shadow-lg"
+                aria-label="Empresa anterior"
+              >
+                <ChevronLeft className="h-6 w-6" />
+              </Button>
+              
+              <Button
+                onClick={scrollNext}
+                disabled={nextBtnDisabled}
+                className="bg-orange-600 hover:bg-orange-700 disabled:bg-gray-300 disabled:cursor-not-allowed text-white w-12 h-12 rounded-full p-0 shadow-lg"
+                aria-label="Próxima empresa"
+              >
+                <ChevronRight className="h-6 w-6" />
+              </Button>
             </div>
             
-            <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
-              <div className="w-16 h-16 bg-gradient-to-br from-purple-600 to-purple-800 rounded-lg flex items-center justify-center text-white font-bold text-xl mb-3">
-                ST
-              </div>
-              <h3 className="font-semibold text-gray-800">StartupTech</h3>
-              <p className="text-sm text-gray-600 text-center">Desenvolvimento Backend</p>
-            </div>
-            
-            <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
-              <div className="w-16 h-16 bg-gradient-to-br from-orange-600 to-red-600 rounded-lg flex items-center justify-center text-white font-bold text-xl mb-3">
-                FL
-              </div>
-              <h3 className="font-semibold text-gray-800">Freelance</h3>
-              <p className="text-sm text-gray-600 text-center">Projetos Diversos</p>
-            </div>
-            
-            <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
-              <div className="w-16 h-16 bg-gradient-to-br from-indigo-600 to-indigo-800 rounded-lg flex items-center justify-center text-white font-bold text-xl mb-3">
-                <Users className="h-8 w-8" />
-              </div>
-              <h3 className="font-semibold text-gray-800">Outros Clientes</h3>
-              <p className="text-sm text-gray-600 text-center">Projetos Corporativos</p>
+            {/* Auto-play indicator */}
+            <div className="text-center mt-4">
+              <p className="text-xs text-gray-500">
+                <Building2 className="inline h-3 w-3 mr-1" />
+                Deslize para ver mais empresas parceiras
+              </p>
             </div>
           </div>
         </div>
