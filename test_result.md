@@ -101,3 +101,75 @@
 #====================================================================================================
 # Testing Data - Main Agent and testing sub agent both should log testing data below this section
 #====================================================================================================
+
+user_problem_statement: "Teste o portfolio backend completamente - APIs para testar: GET /api/health, GET /api/github/repos, POST /api/contact"
+
+backend:
+  - task: "Health Check API"
+    implemented: true
+    working: true
+    file: "/app/backend/server.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+        - working: true
+          agent: "testing"
+          comment: "✅ Health check endpoint working perfectly. Returns proper JSON with status, timestamp, and services info. All services (database, github_api, email_service) are properly reported."
+
+  - task: "GitHub Repositories API"
+    implemented: true
+    working: true
+    file: "/app/backend/services/github_service.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+        - working: true
+          agent: "testing"
+          comment: "✅ GitHub repos endpoint working excellently. Successfully retrieves 12 repositories for user 'yorramn' with proper structure including name, description, githubUrl, technologies, stars, forks, etc. All data validation passes."
+
+  - task: "Contact Form API"
+    implemented: true
+    working: false
+    file: "/app/backend/services/email_service.py"
+    stuck_count: 1
+    priority: "high"
+    needs_retesting: false
+    status_history:
+        - working: false
+          agent: "testing"
+          comment: "❌ Contact form endpoint fails with 500 error when sending valid data. Root cause: Gmail authentication failure due to placeholder password in GMAIL_APP_PASSWORD env var. Email service validation works correctly for invalid data (returns proper 422 errors), but actual email sending fails due to authentication. This is expected in testing environment without real Gmail credentials."
+
+  - task: "API Root Endpoint"
+    implemented: true
+    working: true
+    file: "/app/backend/server.py"
+    stuck_count: 0
+    priority: "medium"
+    needs_retesting: false
+    status_history:
+        - working: true
+          agent: "testing"
+          comment: "✅ API root endpoint working correctly. Returns proper JSON with message and version info."
+
+frontend:
+  # No frontend testing performed as per instructions
+
+metadata:
+  created_by: "testing_agent"
+  version: "1.0"
+  test_sequence: 1
+  run_ui: false
+
+test_plan:
+  current_focus:
+    - "Contact Form API"
+  stuck_tasks:
+    - "Contact Form API"
+  test_all: false
+  test_priority: "high_first"
+
+agent_communication:
+    - agent: "testing"
+      message: "Backend API testing completed. 24/25 tests passed (96% success rate). Only issue is contact form email sending which fails due to Gmail authentication (expected in test environment). All core API functionality working correctly including health checks, GitHub data retrieval, and form validation. Contact form properly validates input data and returns appropriate error codes for invalid requests."
