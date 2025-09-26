@@ -383,6 +383,297 @@ const Portfolio = () => {
         </div>
       </section>
 
+      {/* Companies Section */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+              Empresas que Confiam no Nosso Serviço
+            </h2>
+            <div className="w-20 h-1 bg-orange-500 mx-auto"></div>
+          </div>
+          
+          <div className="grid md:grid-cols-3 lg:grid-cols-5 gap-8 items-center">
+            <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
+              <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-blue-800 rounded-lg flex items-center justify-center text-white font-bold text-xl mb-3">
+                G
+              </div>
+              <h3 className="font-semibold text-gray-800">Galactus</h3>
+              <p className="text-sm text-gray-600 text-center">Plataforma Empresarial</p>
+            </div>
+            
+            <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
+              <div className="w-16 h-16 bg-gradient-to-br from-green-600 to-green-800 rounded-lg flex items-center justify-center text-white font-bold text-xl mb-3">
+                TS
+              </div>
+              <h3 className="font-semibold text-gray-800">Tech Solutions</h3>
+              <p className="text-sm text-gray-600 text-center">Consultoria Técnica</p>
+            </div>
+            
+            <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
+              <div className="w-16 h-16 bg-gradient-to-br from-purple-600 to-purple-800 rounded-lg flex items-center justify-center text-white font-bold text-xl mb-3">
+                ST
+              </div>
+              <h3 className="font-semibold text-gray-800">StartupTech</h3>
+              <p className="text-sm text-gray-600 text-center">Desenvolvimento Backend</p>
+            </div>
+            
+            <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
+              <div className="w-16 h-16 bg-gradient-to-br from-orange-600 to-red-600 rounded-lg flex items-center justify-center text-white font-bold text-xl mb-3">
+                FL
+              </div>
+              <h3 className="font-semibold text-gray-800">Freelance</h3>
+              <p className="text-sm text-gray-600 text-center">Projetos Diversos</p>
+            </div>
+            
+            <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
+              <div className="w-16 h-16 bg-gradient-to-br from-indigo-600 to-indigo-800 rounded-lg flex items-center justify-center text-white font-bold text-xl mb-3">
+                <Users className="h-8 w-8" />
+              </div>
+              <h3 className="font-semibold text-gray-800">Outros Clientes</h3>
+              <p className="text-sm text-gray-600 text-center">Projetos Corporativos</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Services Section */}
+      <section className="py-20 bg-white">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+              Serviços Oferecidos
+            </h2>
+            <div className="w-20 h-1 bg-orange-500 mx-auto mb-6"></div>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Soluções completas em desenvolvimento e gestão de projetos com foco em qualidade e resultados
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <Card className="hover:shadow-lg transition-shadow duration-300 border-0 shadow-md">
+              <CardContent className="p-6 text-center">
+                <div className="bg-orange-100 rounded-full p-4 w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+                  <Code className="h-8 w-8 text-orange-600" />
+                </div>
+                <h3 className="text-xl font-bold text-gray-800 mb-3">Desenvolvimento</h3>
+                <p className="text-gray-600">
+                  Desenvolvimento de aplicações web completas utilizando as melhores tecnologias do mercado como PHP, Laravel, JavaScript e bancos de dados robustos.
+                </p>
+              </CardContent>
+            </Card>
+            
+            <Card className="hover:shadow-lg transition-shadow duration-300 border-0 shadow-md">
+              <CardContent className="p-6 text-center">
+                <div className="bg-blue-100 rounded-full p-4 w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+                  <Users className="h-8 w-8 text-blue-600" />
+                </div>
+                <h3 className="text-xl font-bold text-gray-800 mb-3">Liderança Técnica</h3>
+                <p className="text-gray-600">
+                  Liderança de equipes de desenvolvimento, definição de arquiteturas e implementação de boas práticas para garantir a qualidade do código.
+                </p>
+              </CardContent>
+            </Card>
+            
+            <Card className="hover:shadow-lg transition-shadow duration-300 border-0 shadow-md">
+              <CardContent className="p-6 text-center">
+                <div className="bg-green-100 rounded-full p-4 w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+                  <Settings className="h-8 w-8 text-green-600" />
+                </div>
+                <h3 className="text-xl font-bold text-gray-800 mb-3">Micro Projetos</h3>
+                <p className="text-gray-600">
+                  Desenvolvimento rápido de funcionalidades específicas, APIs, integrações e soluções pontuais com foco em agilidade e eficiência.
+                </p>
+              </CardContent>
+            </Card>
+            
+            <Card className="hover:shadow-lg transition-shadow duration-300 border-0 shadow-md">
+              <CardContent className="p-6 text-center">
+                <div className="bg-purple-100 rounded-full p-4 w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+                  <FileText className="h-8 w-8 text-purple-600" />
+                </div>
+                <h3 className="text-xl font-bold text-gray-800 mb-3">Análise de Requisitos</h3>
+                <p className="text-gray-600">
+                  Levantamento detalhado de necessidades, documentação técnica e definição de escopo para garantir o sucesso do projeto.
+                </p>
+              </CardContent>
+            </Card>
+            
+            <Card className="hover:shadow-lg transition-shadow duration-300 border-0 shadow-md">
+              <CardContent className="p-6 text-center">
+                <div className="bg-yellow-100 rounded-full p-4 w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+                  <Calendar className="h-8 w-8 text-yellow-600" />
+                </div>
+                <h3 className="text-xl font-bold text-gray-800 mb-3">Gestão KANBAN - SPRINT</h3>
+                <p className="text-gray-600">
+                  Implementação e gestão de metodologias ágeis, organização de sprints e acompanhamento de progresso usando ferramentas modernas.
+                </p>
+              </CardContent>
+            </Card>
+            
+            <Card className="hover:shadow-lg transition-shadow duration-300 border-0 shadow-md">
+              <CardContent className="p-6 text-center">
+                <div className="bg-red-100 rounded-full p-4 w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+                  <Layers className="h-8 w-8 text-red-600" />
+                </div>
+                <h3 className="text-xl font-bold text-gray-800 mb-3">Projetos de Alta Complexidade</h3>
+                <p className="text-gray-600">
+                  Desenvolvimento de sistemas enterprise, arquiteturas escaláveis e soluções robustas para grandes volumes de dados e usuários.
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* How It Works Section */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+              Como Funciona o Orçamento
+            </h2>
+            <div className="w-20 h-1 bg-orange-500 mx-auto mb-6"></div>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Um processo transparente e organizado para garantir que seu projeto seja desenvolvido com excelência
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* Step 1 */}
+            <Card className="hover:shadow-lg transition-all duration-300 border-0 shadow-md relative">
+              <CardContent className="p-6">
+                <div className="flex items-start gap-4">
+                  <div className="bg-orange-500 text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-lg flex-shrink-0">
+                    1
+                  </div>
+                  <div>
+                    <div className="flex items-center gap-2 mb-2">
+                      <MessageSquare className="h-5 w-5 text-orange-600" />
+                      <h3 className="text-lg font-bold text-gray-800">Reunião Gratuita</h3>
+                    </div>
+                    <p className="text-gray-600 text-sm">
+                      Conversamos sobre suas necessidades, objetivos do projeto e expectativas. Esta etapa é totalmente gratuita e sem compromisso.
+                    </p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Step 2 */}
+            <Card className="hover:shadow-lg transition-all duration-300 border-0 shadow-md">
+              <CardContent className="p-6">
+                <div className="flex items-start gap-4">
+                  <div className="bg-blue-500 text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-lg flex-shrink-0">
+                    2
+                  </div>
+                  <div>
+                    <div className="flex items-center gap-2 mb-2">
+                      <Target className="h-5 w-5 text-blue-600" />
+                      <h3 className="text-lg font-bold text-gray-800">Alinhamento Técnico</h3>
+                    </div>
+                    <p className="text-gray-600 text-sm">
+                      Definimos tecnologias, cronograma, valores e metodologia. Você recebe uma proposta detalhada e transparente.
+                    </p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Step 3 */}
+            <Card className="hover:shadow-lg transition-all duration-300 border-0 shadow-md">
+              <CardContent className="p-6">
+                <div className="flex items-start gap-4">
+                  <div className="bg-green-500 text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-lg flex-shrink-0">
+                    3
+                  </div>
+                  <div>
+                    <div className="flex items-center gap-2 mb-2">
+                      <Code className="h-5 w-5 text-green-600" />
+                      <h3 className="text-lg font-bold text-gray-800">Desenvolvimento</h3>
+                    </div>
+                    <p className="text-gray-600 text-sm">
+                      Início do desenvolvimento seguindo as melhores práticas, com acompanhamento constante e testes rigorosos.
+                    </p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Step 4 */}
+            <Card className="hover:shadow-lg transition-all duration-300 border-0 shadow-md">
+              <CardContent className="p-6">
+                <div className="flex items-start gap-4">
+                  <div className="bg-purple-500 text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-lg flex-shrink-0">
+                    4
+                  </div>
+                  <div>
+                    <div className="flex items-center gap-2 mb-2">
+                      <CheckCircle className="h-5 w-5 text-purple-600" />
+                      <h3 className="text-lg font-bold text-gray-800">Validação</h3>
+                    </div>
+                    <p className="text-gray-600 text-sm">
+                      Você testa e valida todas as funcionalidades. Se necessário, fazemos ajustes e melhorias sem custos adicionais.
+                    </p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Step 5 */}
+            <Card className="hover:shadow-lg transition-all duration-300 border-0 shadow-md">
+              <CardContent className="p-6">
+                <div className="flex items-start gap-4">
+                  <div className="bg-indigo-500 text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-lg flex-shrink-0">
+                    5
+                  </div>
+                  <div>
+                    <div className="flex items-center gap-2 mb-2">
+                      <Award className="h-5 w-5 text-indigo-600" />
+                      <h3 className="text-lg font-bold text-gray-800">Entrega Final</h3>
+                    </div>
+                    <p className="text-gray-600 text-sm">
+                      Entrega do projeto completo com documentação, treinamento se necessário e coleta de feedback para futuras melhorias.
+                    </p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Step 6 - Extra */}
+            <Card className="hover:shadow-lg transition-all duration-300 border-0 shadow-md border-2 border-orange-200">
+              <CardContent className="p-6">
+                <div className="flex items-start gap-4">
+                  <div className="bg-orange-600 text-white rounded-full w-12 h-12 flex items-center justify-center font-bold flex-shrink-0">
+                    <Wrench className="h-6 w-6" />
+                  </div>
+                  <div>
+                    <div className="flex items-center gap-2 mb-2">
+                      <Clock className="h-5 w-5 text-orange-600" />
+                      <h3 className="text-lg font-bold text-gray-800">Manutenção</h3>
+                      <Badge className="bg-orange-100 text-orange-800 text-xs">Extra</Badge>
+                    </div>
+                    <p className="text-gray-600 text-sm">
+                      Oferecemos serviços de manutenção e suporte contínuo com valores competitivos e atendimento prioritário.
+                    </p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+          
+          <div className="text-center mt-12">
+            <Button 
+              onClick={openWhatsApp}
+              className="bg-orange-600 hover:bg-orange-700 text-white px-8 py-4 rounded-lg font-semibold text-lg"
+            >
+              <MessageCircle className="mr-2 h-6 w-6" />
+              Solicitar Orçamento Gratuito
+            </Button>
+          </div>
+        </div>
+      </section>
+
       {/* Testimonials Section */}
       <section className="py-20 bg-gray-900 text-white">
         <div className="max-w-6xl mx-auto px-6">
