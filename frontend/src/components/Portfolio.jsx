@@ -20,7 +20,18 @@ import {
   MessageCircle,
   User,
   Briefcase,
-  Star
+  Star,
+  Users,
+  Settings,
+  Target,
+  FileText,
+  Calendar,
+  Layers,
+  CheckCircle,
+  MessageSquare,
+  Wrench,
+  Clock,
+  Award
 } from "lucide-react";
 import mockData from "../data/mock";
 import { apiService } from "../services/api";
