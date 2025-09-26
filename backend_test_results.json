@@ -1,0 +1,161 @@
+{
+  "total_tests": 25,
+  "passed": 24,
+  "failed": 1,
+  "errors": [
+    "Contact Form Valid - Status Code: Expected 200, got 500"
+  ],
+  "test_details": [
+    {
+      "test": "API Root - Status Code",
+      "status": "✅ PASS",
+      "details": "Returns 200 OK",
+      "timestamp": "2025-09-26T17:13:36.226229"
+    },
+    {
+      "test": "API Root - Response Structure",
+      "status": "✅ PASS",
+      "details": "Message: Portfolio API is running, Version: 1.0.0",
+      "timestamp": "2025-09-26T17:13:36.226276"
+    },
+    {
+      "test": "Health Check - Status Code",
+      "status": "✅ PASS",
+      "details": "Returns 200 OK",
+      "timestamp": "2025-09-26T17:13:36.304066"
+    },
+    {
+      "test": "Health Check - Response Structure",
+      "status": "✅ PASS",
+      "details": "All required fields present",
+      "timestamp": "2025-09-26T17:13:36.304113"
+    },
+    {
+      "test": "Health Check - Status Value",
+      "status": "✅ PASS",
+      "details": "Status is 'healthy'",
+      "timestamp": "2025-09-26T17:13:36.304126"
+    },
+    {
+      "test": "Health Check - Database Service",
+      "status": "✅ PASS",
+      "details": "Service status: connected",
+      "timestamp": "2025-09-26T17:13:36.304135"
+    },
+    {
+      "test": "Health Check - Github_Api Service",
+      "status": "✅ PASS",
+      "details": "Service status: available",
+      "timestamp": "2025-09-26T17:13:36.304144"
+    },
+    {
+      "test": "Health Check - Email_Service Service",
+      "status": "✅ PASS",
+      "details": "Service status: configured",
+      "timestamp": "2025-09-26T17:13:36.304154"
+    },
+    {
+      "test": "GitHub Repos - Status Code",
+      "status": "✅ PASS",
+      "details": "Returns 200 OK",
+      "timestamp": "2025-09-26T17:13:36.695478"
+    },
+    {
+      "test": "GitHub Repos - Response Structure",
+      "status": "✅ PASS",
+      "details": "Contains 'repos' and 'total' fields",
+      "timestamp": "2025-09-26T17:13:36.695549"
+    },
+    {
+      "test": "GitHub Repos - Count Consistency",
+      "status": "✅ PASS",
+      "details": "Total (12) matches repos count (12)",
+      "timestamp": "2025-09-26T17:13:36.695576"
+    },
+    {
+      "test": "GitHub Repos - Repo Structure",
+      "status": "✅ PASS",
+      "details": "All required repo fields present",
+      "timestamp": "2025-09-26T17:13:36.695584"
+    },
+    {
+      "test": "GitHub Repos - URL Format",
+      "status": "✅ PASS",
+      "details": "GitHub URL has correct format",
+      "timestamp": "2025-09-26T17:13:36.695590"
+    },
+    {
+      "test": "GitHub Repos - Technologies Format",
+      "status": "✅ PASS",
+      "details": "Technologies is array with 1 items",
+      "timestamp": "2025-09-26T17:13:36.695596"
+    },
+    {
+      "test": "GitHub Repos - Data Types",
+      "status": "✅ PASS",
+      "details": "Stars and forks are integers",
+      "timestamp": "2025-09-26T17:13:36.695601"
+    },
+    {
+      "test": "GitHub Repos - Data Retrieval",
+      "status": "✅ PASS",
+      "details": "Successfully retrieved 12 repositories for user 'yorramn'",
+      "timestamp": "2025-09-26T17:13:36.695607"
+    },
+    {
+      "test": "Contact Form Valid - Status Code",
+      "status": "❌ FAIL",
+      "details": "Expected 200, got 500",
+      "timestamp": "2025-09-26T17:13:37.253187",
+      "response_data": "{\"detail\":\"Erro ao enviar email. Tente novamente mais tarde.\"}"
+    },
+    {
+      "test": "Contact Form Invalid - Missing Email Status",
+      "status": "✅ PASS",
+      "details": "Returns error status 422",
+      "timestamp": "2025-09-26T17:13:37.296387"
+    },
+    {
+      "test": "Contact Form Invalid - Missing Email Error Response",
+      "status": "✅ PASS",
+      "details": "Returns proper error response",
+      "timestamp": "2025-09-26T17:13:37.296433"
+    },
+    {
+      "test": "Contact Form Invalid - Invalid Email Status",
+      "status": "✅ PASS",
+      "details": "Returns error status 422",
+      "timestamp": "2025-09-26T17:13:37.331343"
+    },
+    {
+      "test": "Contact Form Invalid - Invalid Email Error Response",
+      "status": "✅ PASS",
+      "details": "Returns proper error response",
+      "timestamp": "2025-09-26T17:13:37.331522"
+    },
+    {
+      "test": "Contact Form Invalid - Short Message Status",
+      "status": "✅ PASS",
+      "details": "Returns error status 422",
+      "timestamp": "2025-09-26T17:13:37.369888"
+    },
+    {
+      "test": "Contact Form Invalid - Short Message Error Response",
+      "status": "✅ PASS",
+      "details": "Returns proper error response",
+      "timestamp": "2025-09-26T17:13:37.370077"
+    },
+    {
+      "test": "Contact Form Invalid - Missing Name Status",
+      "status": "✅ PASS",
+      "details": "Returns error status 422",
+      "timestamp": "2025-09-26T17:13:37.409161"
+    },
+    {
+      "test": "Contact Form Invalid - Missing Name Error Response",
+      "status": "✅ PASS",
+      "details": "Returns proper error response",
+      "timestamp": "2025-09-26T17:13:37.409347"
+    }
+  ]
+}
