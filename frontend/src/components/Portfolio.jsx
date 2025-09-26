@@ -83,6 +83,17 @@ const Portfolio = () => {
     onSelect();
     emblaApi.on('reInit', onSelect);
     emblaApi.on('select', onSelect);
+    
+    // Auto-play functionality
+    const autoplay = setInterval(() => {
+      if (emblaApi && emblaApi.canScrollNext()) {
+        emblaApi.scrollNext();
+      } else if (emblaApi) {
+        emblaApi.scrollTo(0);
+      }
+    }, 5000); // Change slide every 5 seconds
+
+    return () => clearInterval(autoplay);
   }, [emblaApi, onSelect]);
 
   // Companies data
