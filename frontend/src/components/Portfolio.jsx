@@ -54,6 +54,96 @@ const Portfolio = () => {
   const [isSubmittingForm, setIsSubmittingForm] = useState(false);
   const { toast } = useToast();
 
+  // Carousel setup
+  const [emblaRef, emblaApi] = useEmblaCarousel({ 
+    loop: true,
+    align: 'center',
+    skipSnaps: false,
+    dragFree: false
+  });
+  const [prevBtnDisabled, setPrevBtnDisabled] = useState(true);
+  const [nextBtnDisabled, setNextBtnDisabled] = useState(true);
+
+  const scrollPrev = useCallback(() => {
+    if (emblaApi) emblaApi.scrollPrev()
+  }, [emblaApi]);
+
+  const scrollNext = useCallback(() => {
+    if (emblaApi) emblaApi.scrollNext()
+  }, [emblaApi]);
+
+  const onSelect = useCallback(() => {
+    if (!emblaApi) return;
+    setPrevBtnDisabled(!emblaApi.canScrollPrev());
+    setNextBtnDisabled(!emblaApi.canScrollNext());
+  }, [emblaApi]);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+    onSelect();
+    emblaApi.on('reInit', onSelect);
+    emblaApi.on('select', onSelect);
+  }, [emblaApi, onSelect]);
+
+  // Companies data
+  const companies = [
+    {
+      id: 1,
+      name: "Galactus",
+      title: "Plataforma Empresarial",
+      description: "Desenvolvimento de sistema robusto para gestão empresarial com mais de 10.000 usuários ativos.",
+      logo: "G",
+      gradient: "from-blue-600 to-blue-800",
+      metrics: "10k+ usuários",
+      duration: "2022 - Presente",
+      testimonial: "Excelente liderança técnica em projetos complexos"
+    },
+    {
+      id: 2,
+      name: "Tech Solutions",
+      title: "Consultoria Técnica",
+      description: "Consultoria especializada em arquitetura de software e otimização de performance para sistemas críticos.",
+      logo: "TS",
+      gradient: "from-green-600 to-green-800",
+      metrics: "95% performance",
+      duration: "2021 - 2022",
+      testimonial: "Entrega no prazo com qualidade excepcional"
+    },
+    {
+      id: 3,
+      name: "StartupTech",
+      title: "Desenvolvimento Backend",
+      description: "Implementação de APIs robustas e integração de sistemas para startup em crescimento acelerado.",
+      logo: "ST",
+      gradient: "from-purple-600 to-purple-800",
+      metrics: "50+ APIs",
+      duration: "2019 - 2020",
+      testimonial: "Soluções inovadoras e código de alta qualidade"
+    },
+    {
+      id: 4,
+      name: "E-Commerce Solutions",
+      title: "Plataforma de Vendas",
+      description: "Desenvolvimento completo de plataforma e-commerce com gateway de pagamento e gestão de estoque.",
+      logo: "ES",
+      gradient: "from-orange-600 to-red-600",
+      metrics: "R$ 2M+ vendas",
+      duration: "2020 - 2021",
+      testimonial: "ROI excepcional com implementação ágil"
+    },
+    {
+      id: 5,
+      name: "FinTech Brasil",
+      title: "Sistema Financeiro",
+      description: "Desenvolvimento de sistema financeiro seguro com integração bancária e conformidade regulatória.",
+      logo: "FB",
+      gradient: "from-indigo-600 to-indigo-800",
+      metrics: "100% uptime",
+      duration: "2020 - 2021",
+      testimonial: "Segurança e confiabilidade incomparáveis"
+    }
+  ];
+
   // Fetch GitHub repositories on component mount
   useEffect(() => {
     fetchGitHubRepos();
