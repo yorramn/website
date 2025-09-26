@@ -31,7 +31,12 @@ import {
   MessageSquare,
   Wrench,
   Clock,
-  Award
+  Award,
+  ChevronLeft,
+  ChevronRight,
+  Building2,
+  TrendingUp,
+  Shield
 } from "lucide-react";
 import mockData from "../data/mock";
 import { apiService } from "../services/api";
