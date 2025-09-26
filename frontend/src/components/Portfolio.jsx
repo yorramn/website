@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { Button } from "./ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card";
 import { Badge } from "./ui/badge";
@@ -8,6 +8,7 @@ import { Label } from "./ui/label";
 import { useToast } from "../hooks/use-toast";
 import { Toaster } from "./ui/toaster";
 import LoadingSpinner from "./LoadingSpinner";
+import useEmblaCarousel from 'embla-carousel-react';
 import { 
   Github, 
   Linkedin, 
