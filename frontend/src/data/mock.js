@@ -5,7 +5,7 @@ const mockData = {
     bio: "Atleta nas horas vagas e entusiasta da programação, fissurado por aprender e ensinar, busco compartilhar meu conhecimento e contribuir em projetos OpenSource e privados.",
     avatar: "https://avatars.githubusercontent.com/yorramn?v=4",
     github: "https://github.com/yorramn",
-    linkedin: "https://linkedin.com/in/yorramn",
+    linkedin: "https://www.linkedin.com/in/gabriel-yorramn-a15816289/",
     email: "yorramn.dev@gmail.com",
     phone: "+55 (11) 98941-6584"
   },
@@ -40,25 +40,25 @@ const mockData = {
   
   technologies: {
     backend: ["PHP", "Laravel", "Java", "GraphQL", "RESTful APIs", "Microservices"],
-    frontend: ["JavaScript", "Vue.js", "React", "HTML5", "CSS3", "Bootstrap"],
-    database: ["MySQL", "PostgreSQL", "MongoDB", "Redis", "SQL Server"],
+    frontend: ["JavaScript", "Vue.js", "React", "HTML5", "CSS3", "Bootstrap", 'AngularJS'],
+    database: ["MySQL", "PostgreSQL", "Redis", "SQL Server"],
     tools: ["Docker", "Git", "Jenkins", "AWS", "Linux", "Scrum"]
   },
   
   testimonials: [
     {
-      author: "Carlos Silva",
-      position: "CTO - Galactus",
+      author: "Leticia S. Silva",
+      position: "CEO - Galactus",
       content: "Yorram demonstrou excepcional liderança técnica em nossos projetos mais complexos. Sua capacidade de implementar soluções escaláveis e gerenciar equipes de desenvolvimento é impressionante. Recomendo fortemente seus serviços.",
       rating: 5,
       company: "Galactus"
     },
     {
-      author: "Maria Santos",
-      position: "Product Manager - Tech Solutions",
+      author: "Julia A. Mota",
+      position: "CEO - Juliamota Designs",
       content: "Trabalhar com Yorram foi uma experiência fantástica. Ele conseguiu entregar nossa plataforma no prazo, com qualidade excepcional e seguindo todas as melhores práticas de desenvolvimento. Um profissional exemplar.",
       rating: 5,
-      company: "Tech Solutions"
+      company: "Juliamota Designs"
     }
   ],
   
@@ -66,8 +66,8 @@ const mockData = {
     {
       title: "Líder Técnico",
       company: "Galactus",
-      period: "2022 - Presente",
-      description: "Liderança de equipe de desenvolvimento, implementação de metodologias ágeis e arquitetura de soluções escaláveis."
+      period: "2021 - Presente",
+      description: "Liderança de equipe de desenvolvimento, implementação de metodologias ágeis e desenvolvimento de LandingPages."
     },
     {
       title: "Desenvolvedor Full Stack Pleno",
