@@ -446,9 +446,9 @@ const Portfolio = () => {
                             <a href="#sobre" className="text-gray-600 hover:text-orange-600 transition-colors">
                                 Sobre
                             </a>
-                            <a href="#projetos" className="text-gray-600 hover:text-orange-600 transition-colors">
-                                Projetos
-                            </a>
+                            {/*<a href="#projetos" className="text-gray-600 hover:text-orange-600 transition-colors">*/}
+                            {/*    Projetos*/}
+                            {/*</a>*/}
                             <a href="#tecnologias" className="text-gray-600 hover:text-orange-600 transition-colors">
                                 Tecnologias
                             </a>
