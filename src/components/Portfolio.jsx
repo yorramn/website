@@ -158,185 +158,185 @@ const Portfolio = () => {
         // }
     ];
     // Fetch GitHub repositories on component mount
-    useEffect(() => {
-        setIsLoadingProjects(true);
-
-        const _isFeaturedRepo = (repo) => {
-            const featuredNames = ['cv-creator', 'galactus', 'portfolio', 'api', 'ecommerce'];
-            const name = (repo.name || '').toLowerCase();
-            const stars = repo.stargazers_count || 0;
-            const hasDescription = Boolean(repo.description);
-
-            const hasFeaturedName = featuredNames.some(featuredName =>
-                name.includes(featuredName)
-            );
-
-            if (hasFeaturedName) {
-                return true;
-            }
-
-            return stars > 2 && hasDescription;
-        };
-
-        const _extractLiveUrl = (repo) => {
-            const homepage = repo.homepage;
-            if (homepage && homepage.startsWith('http')) {
-                return homepage;
-            }
-
-            if (repo.has_pages) {
-                return `https://${repo.owner?.login || 'yorramn'}.github.io/${repo.name || ''}`;
-            }
-
-            return null;
-        };
-
-        const _extractTechnologies = (repo, languagesData = {}) => {
-            const technologies = [];
-
-            // Primary language from repo data
-            if (repo.language) {
-                technologies.push(repo.language);
-            }
-
-            // Add languages from languages_url API response
-            const languagesFromApi = Object.keys(languagesData);
-            technologies.push(...languagesFromApi);
-
-            // Common web technologies based on repo name and description
-            const name = (repo.name || '').toLowerCase();
-            const description = (repo.description || '').toLowerCase();
-
-            const hasTerm = (terms) => {
-                return terms.some(term => name.includes(term) || description.includes(term));
-            };
-
-            // Backend technologies
-            if (hasTerm(['laravel', 'php'])) {
-                if (!technologies.includes('Laravel')) technologies.push('Laravel');
-                if (!technologies.includes('PHP')) technologies.push('PHP');
-            }
-
-            if (hasTerm(['java', 'spring'])) {
-                if (!technologies.includes('Java')) technologies.push('Java');
-            }
-
-            if (hasTerm(['graphql', 'gql'])) {
-                technologies.push('GraphQL');
-            }
-
-            // Frontend technologies
-            if (hasTerm(['vue', 'vuejs'])) {
-                technologies.push('Vue.js');
-            }
-
-            if (hasTerm(['react', 'reactjs'])) {
-                technologies.push('React');
-            }
-
-            if (hasTerm(['javascript', 'js'])) {
-                technologies.push('JavaScript');
-            }
-
-            // Database technologies
-            if (hasTerm(['mysql', 'sql'])) {
-                technologies.push('MySQL');
-            }
-
-            if (hasTerm(['postgres', 'postgresql'])) {
-                technologies.push('PostgreSQL');
-            }
-
-            if (hasTerm(['mongo', 'mongodb'])) {
-                technologies.push('MongoDB');
-            }
-
-            // Infrastructure
-            if (hasTerm(['docker', 'dockerfile'])) {
-                technologies.push('Docker');
-            }
-
-            // Remove duplicates and return max 6 technologies
-            const uniqueTechnologies = [...new Set(technologies)];
-            return uniqueTechnologies.slice(0, 6);
-        };
-
-        // Função para buscar linguagens de um repositório
-        const fetchRepoLanguages = async (languagesUrl) => {
-            try {
-                const response = await fetch(languagesUrl, {
-                    headers: {
-                        Authorization: "Bearer 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"
-                    }
-                });
-                return await response.json();
-            } catch (error) {
-                console.error('Error fetching languages:', error);
-                return {};
-            }
-        };
-
-        // Função principal que busca repositórios e depois as linguagens
-        const fetchAllData = async () => {
-            try {
-                // Primeiro, busca os repositórios
-                const repos = await fetchGitHubRepos();
-                const filteredRepos = repos.filter(({id}) => id !== 1064937645).sort((a, b) => b.name - a.name);
-
-                // Agora, para cada repositório, busca as linguagens
-                const projectsWithLanguages = await Promise.all(
-                    filteredRepos.map(async (repo) => {
-                        try {
-                            // Busca as linguagens do repositório
-                            const languagesData = await fetchRepoLanguages(repo.languages_url);
-
-                            return {
-                                name: repo.name,
-                                description: repo.description ?? 'Este projeto não contém descrição.',
-                                githubUrl: repo.html_url ?? '',
-                                liveUrl: _extractLiveUrl(repo),
-                                stars: repo.stargazers_count ?? '',
-                                forks: repo.forks_count ?? '',
-                                language: repo.language ?? 'Unknown',
-                                updated_at: repo.updated_at ?? '',
-                                technologies: _extractTechnologies(repo, languagesData),
-                                featured: _isFeaturedRepo(repo)
-                            };
-                        } catch (error) {
-                            console.error(`Error processing repo ${repo.name}:`, error);
-                            return {
-                                name: repo.name,
-                                description: repo.description ?? 'Este projeto não contém descrição.',
-                                githubUrl: repo.html_url ?? '',
-                                liveUrl: _extractLiveUrl(repo),
-                                stars: repo.stargazers_count ?? '',
-                                forks: repo.forks_count ?? '',
-                                language: repo.language ?? 'Unknown',
-                                updated_at: repo.updated_at ?? '',
-                                technologies: _extractTechnologies(repo), // Sem linguagens da API
-                                featured: _isFeaturedRepo(repo)
-                            };
-                        }
-                    }).slice(0, 9)
-                );
-
-                setProjects(projectsWithLanguages);
-            } catch (error) {
-                console.error('Error in fetchAllData:', error);
-                // Fallback para dados mock
-                setProjects(mockData.projects);
-                toast({
-                    title: "Aviso",
-                    description: "Usando dados locais. Alguns projetos podem não estar atualizados.",
-                    variant: "destructive",
-                });
-            }
-        };
-
-        fetchAllData().finally(() => {
-            setIsLoadingProjects(false);
-        });
-    }, []);
+    // useEffect(() => {
+    //     setIsLoadingProjects(true);
+    //
+    //     const _isFeaturedRepo = (repo) => {
+    //         const featuredNames = ['cv-creator', 'galactus', 'portfolio', 'api', 'ecommerce'];
+    //         const name = (repo.name || '').toLowerCase();
+    //         const stars = repo.stargazers_count || 0;
+    //         const hasDescription = Boolean(repo.description);
+    //
+    //         const hasFeaturedName = featuredNames.some(featuredName =>
+    //             name.includes(featuredName)
+    //         );
+    //
+    //         if (hasFeaturedName) {
+    //             return true;
+    //         }
+    //
+    //         return stars > 2 && hasDescription;
+    //     };
+    //
+    //     const _extractLiveUrl = (repo) => {
+    //         const homepage = repo.homepage;
+    //         if (homepage && homepage.startsWith('http')) {
+    //             return homepage;
+    //         }
+    //
+    //         if (repo.has_pages) {
+    //             return `https://${repo.owner?.login || 'yorramn'}.github.io/${repo.name || ''}`;
+    //         }
+    //
+    //         return null;
+    //     };
+    //
+    //     const _extractTechnologies = (repo, languagesData = {}) => {
+    //         const technologies = [];
+    //
+    //         // Primary language from repo data
+    //         if (repo.language) {
+    //             technologies.push(repo.language);
+    //         }
+    //
+    //         // Add languages from languages_url API response
+    //         const languagesFromApi = Object.keys(languagesData);
+    //         technologies.push(...languagesFromApi);
+    //
+    //         // Common web technologies based on repo name and description
+    //         const name = (repo.name || '').toLowerCase();
+    //         const description = (repo.description || '').toLowerCase();
+    //
+    //         const hasTerm = (terms) => {
+    //             return terms.some(term => name.includes(term) || description.includes(term));
+    //         };
+    //
+    //         // Backend technologies
+    //         if (hasTerm(['laravel', 'php'])) {
+    //             if (!technologies.includes('Laravel')) technologies.push('Laravel');
+    //             if (!technologies.includes('PHP')) technologies.push('PHP');
+    //         }
+    //
+    //         if (hasTerm(['java', 'spring'])) {
+    //             if (!technologies.includes('Java')) technologies.push('Java');
+    //         }
+    //
+    //         if (hasTerm(['graphql', 'gql'])) {
+    //             technologies.push('GraphQL');
+    //         }
+    //
+    //         // Frontend technologies
+    //         if (hasTerm(['vue', 'vuejs'])) {
+    //             technologies.push('Vue.js');
+    //         }
+    //
+    //         if (hasTerm(['react', 'reactjs'])) {
+    //             technologies.push('React');
+    //         }
+    //
+    //         if (hasTerm(['javascript', 'js'])) {
+    //             technologies.push('JavaScript');
+    //         }
+    //
+    //         // Database technologies
+    //         if (hasTerm(['mysql', 'sql'])) {
+    //             technologies.push('MySQL');
+    //         }
+    //
+    //         if (hasTerm(['postgres', 'postgresql'])) {
+    //             technologies.push('PostgreSQL');
+    //         }
+    //
+    //         if (hasTerm(['mongo', 'mongodb'])) {
+    //             technologies.push('MongoDB');
+    //         }
+    //
+    //         // Infrastructure
+    //         if (hasTerm(['docker', 'dockerfile'])) {
+    //             technologies.push('Docker');
+    //         }
+    //
+    //         // Remove duplicates and return max 6 technologies
+    //         const uniqueTechnologies = [...new Set(technologies)];
+    //         return uniqueTechnologies.slice(0, 6);
+    //     };
+    //
+    //     // Função para buscar linguagens de um repositório
+    //     const fetchRepoLanguages = async (languagesUrl) => {
+    //         try {
+    //             const response = await fetch(languagesUrl, {
+    //                 headers: {
+    //                     Authorization: "Bearer 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"
+    //                 }
+    //             });
+    //             return await response.json();
+    //         } catch (error) {
+    //             console.error('Error fetching languages:', error);
+    //             return {};
+    //         }
+    //     };
+    //
+    //     // Função principal que busca repositórios e depois as linguagens
+    //     const fetchAllData = async () => {
+    //         try {
+    //             // Primeiro, busca os repositórios
+    //             const repos = await fetchGitHubRepos();
+    //             const filteredRepos = repos.filter(({id}) => id !== 1064937645).sort((a, b) => b.name - a.name);
+    //
+    //             // Agora, para cada repositório, busca as linguagens
+    //             const projectsWithLanguages = await Promise.all(
+    //                 filteredRepos.map(async (repo) => {
+    //                     try {
+    //                         // Busca as linguagens do repositório
+    //                         const languagesData = await fetchRepoLanguages(repo.languages_url);
+    //
+    //                         return {
+    //                             name: repo.name,
+    //                             description: repo.description ?? 'Este projeto não contém descrição.',
+    //                             githubUrl: repo.html_url ?? '',
+    //                             liveUrl: _extractLiveUrl(repo),
+    //                             stars: repo.stargazers_count ?? '',
+    //                             forks: repo.forks_count ?? '',
+    //                             language: repo.language ?? 'Unknown',
+    //                             updated_at: repo.updated_at ?? '',
+    //                             technologies: _extractTechnologies(repo, languagesData),
+    //                             featured: _isFeaturedRepo(repo)
+    //                         };
+    //                     } catch (error) {
+    //                         console.error(`Error processing repo ${repo.name}:`, error);
+    //                         return {
+    //                             name: repo.name,
+    //                             description: repo.description ?? 'Este projeto não contém descrição.',
+    //                             githubUrl: repo.html_url ?? '',
+    //                             liveUrl: _extractLiveUrl(repo),
+    //                             stars: repo.stargazers_count ?? '',
+    //                             forks: repo.forks_count ?? '',
+    //                             language: repo.language ?? 'Unknown',
+    //                             updated_at: repo.updated_at ?? '',
+    //                             technologies: _extractTechnologies(repo), // Sem linguagens da API
+    //                             featured: _isFeaturedRepo(repo)
+    //                         };
+    //                     }
+    //                 }).slice(0, 9)
+    //             );
+    //
+    //             setProjects(projectsWithLanguages);
+    //         } catch (error) {
+    //             console.error('Error in fetchAllData:', error);
+    //             // Fallback para dados mock
+    //             setProjects(mockData.projects);
+    //             toast({
+    //                 title: "Aviso",
+    //                 description: "Usando dados locais. Alguns projetos podem não estar atualizados.",
+    //                 variant: "destructive",
+    //             });
+    //         }
+    //     };
+    //
+    //     fetchAllData().finally(() => {
+    //         setIsLoadingProjects(false);
+    //     });
+    // }, []);
 
     const fetchGitHubRepos = async () => {
         try {
@@ -570,91 +570,91 @@ const Portfolio = () => {
                 </div>
             </section>
 
-            {/* Projects Section */}
-            <section id="projetos" className="py-20 bg-gray-50">
-                <div className="max-w-6xl mx-auto px-6">
-                    <div className="text-center mb-12">
-                        <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
-                            Projetos em Destaque
-                        </h2>
-                        <div className="w-20 h-1 bg-orange-500 mx-auto"></div>
-                    </div>
+            {/*/!* Projects Section *!/*/}
+            {/*<section id="projetos" className="py-20 bg-gray-50">*/}
+            {/*    <div className="max-w-6xl mx-auto px-6">*/}
+            {/*        <div className="text-center mb-12">*/}
+            {/*            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">*/}
+            {/*                Projetos em Destaque*/}
+            {/*            </h2>*/}
+            {/*            <div className="w-20 h-1 bg-orange-500 mx-auto"></div>*/}
+            {/*        </div>*/}
 
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {isLoadingProjects ? (
-                            <div className="col-span-full">
-                                <LoadingSpinner size="lg" text="Carregando projetos do GitHub..."/>
-                            </div>
-                        ) : projects.length > 0 ? (
-                            projects.map((project, index) => (
-                                <Card key={index}
-                                      className="hover:shadow-lg transition-shadow duration-300 border-0 shadow-md">
-                                    <CardHeader>
-                                        <div className="flex justify-between items-start">
-                                            <CardTitle className="text-xl font-bold text-gray-800">
-                                                {project.name}
-                                            </CardTitle>
-                                            <div className="flex gap-2">
-                                                {project.githubUrl && (
-                                                    <a href={project.githubUrl} target="_blank"
-                                                       rel="noopener noreferrer">
-                                                        <Button variant="ghost" size="sm" className="p-2">
-                                                            <Github className="h-4 w-4 text-gray-600"/>
-                                                        </Button>
-                                                    </a>
-                                                )}
-                                                {project.liveUrl && (
-                                                    <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
-                                                        <Button variant="ghost" size="sm" className="p-2">
-                                                            <ExternalLink className="h-4 w-4 text-gray-600"/>
-                                                        </Button>
-                                                    </a>
-                                                )}
-                                            </div>
-                                        </div>
-                                        <CardDescription className="text-gray-600">
-                                            {project.description}
-                                        </CardDescription>
-                                        {(project.stars > 0 || project.forks > 0) && (
-                                            <div className="flex gap-4 text-sm text-gray-500">
-                                                {project.stars > 0 && (
-                                                    <div className="flex items-center gap-1">
-                                                        <Star className="h-3 w-3"/>
-                                                        <span>{project.stars}</span>
-                                                    </div>
-                                                )}
-                                                {project.forks > 0 && (
-                                                    <div className="flex items-center gap-1">
-                                                        <Github className="h-3 w-3"/>
-                                                        <span>{project.forks}</span>
-                                                    </div>
-                                                )}
-                                            </div>
-                                        )}
-                                    </CardHeader>
-                                    <CardContent>
-                                        <div className="flex flex-wrap gap-2">
-                                            {project.technologies.map((tech, techIndex) => (
-                                                <Badge
-                                                    key={techIndex}
-                                                    variant="secondary"
-                                                    className="bg-gray-200 text-gray-700 hover:bg-orange-100"
-                                                >
-                                                    {tech}
-                                                </Badge>
-                                            ))}
-                                        </div>
-                                    </CardContent>
-                                </Card>
-                            ))
-                        ) : (
-                            <div className="col-span-full text-center py-8">
-                                <p className="text-gray-600">Nenhum projeto encontrado.</p>
-                            </div>
-                        )}
-                    </div>
-                </div>
-            </section>
+            {/*        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">*/}
+            {/*            {isLoadingProjects ? (*/}
+            {/*                <div className="col-span-full">*/}
+            {/*                    <LoadingSpinner size="lg" text="Carregando projetos do GitHub..."/>*/}
+            {/*                </div>*/}
+            {/*            ) : projects.length > 0 ? (*/}
+            {/*                projects.map((project, index) => (*/}
+            {/*                    <Card key={index}*/}
+            {/*                          className="hover:shadow-lg transition-shadow duration-300 border-0 shadow-md">*/}
+            {/*                        <CardHeader>*/}
+            {/*                            <div className="flex justify-between items-start">*/}
+            {/*                                <CardTitle className="text-xl font-bold text-gray-800">*/}
+            {/*                                    {project.name}*/}
+            {/*                                </CardTitle>*/}
+            {/*                                <div className="flex gap-2">*/}
+            {/*                                    {project.githubUrl && (*/}
+            {/*                                        <a href={project.githubUrl} target="_blank"*/}
+            {/*                                           rel="noopener noreferrer">*/}
+            {/*                                            <Button variant="ghost" size="sm" className="p-2">*/}
+            {/*                                                <Github className="h-4 w-4 text-gray-600"/>*/}
+            {/*                                            </Button>*/}
+            {/*                                        </a>*/}
+            {/*                                    )}*/}
+            {/*                                    {project.liveUrl && (*/}
+            {/*                                        <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">*/}
+            {/*                                            <Button variant="ghost" size="sm" className="p-2">*/}
+            {/*                                                <ExternalLink className="h-4 w-4 text-gray-600"/>*/}
+            {/*                                            </Button>*/}
+            {/*                                        </a>*/}
+            {/*                                    )}*/}
+            {/*                                </div>*/}
+            {/*                            </div>*/}
+            {/*                            <CardDescription className="text-gray-600">*/}
+            {/*                                {project.description}*/}
+            {/*                            </CardDescription>*/}
+            {/*                            {(project.stars > 0 || project.forks > 0) && (*/}
+            {/*                                <div className="flex gap-4 text-sm text-gray-500">*/}
+            {/*                                    {project.stars > 0 && (*/}
+            {/*                                        <div className="flex items-center gap-1">*/}
+            {/*                                            <Star className="h-3 w-3"/>*/}
+            {/*                                            <span>{project.stars}</span>*/}
+            {/*                                        </div>*/}
+            {/*                                    )}*/}
+            {/*                                    {project.forks > 0 && (*/}
+            {/*                                        <div className="flex items-center gap-1">*/}
+            {/*                                            <Github className="h-3 w-3"/>*/}
+            {/*                                            <span>{project.forks}</span>*/}
+            {/*                                        </div>*/}
+            {/*                                    )}*/}
+            {/*                                </div>*/}
+            {/*                            )}*/}
+            {/*                        </CardHeader>*/}
+            {/*                        <CardContent>*/}
+            {/*                            <div className="flex flex-wrap gap-2">*/}
+            {/*                                {project.technologies.map((tech, techIndex) => (*/}
+            {/*                                    <Badge*/}
+            {/*                                        key={techIndex}*/}
+            {/*                                        variant="secondary"*/}
+            {/*                                        className="bg-gray-200 text-gray-700 hover:bg-orange-100"*/}
+            {/*                                    >*/}
+            {/*                                        {tech}*/}
+            {/*                                    </Badge>*/}
+            {/*                                ))}*/}
+            {/*                            </div>*/}
+            {/*                        </CardContent>*/}
+            {/*                    </Card>*/}
+            {/*                ))*/}
+            {/*            ) : (*/}
+            {/*                <div className="col-span-full text-center py-8">*/}
+            {/*                    <p className="text-gray-600">Nenhum projeto encontrado.</p>*/}
+            {/*                </div>*/}
+            {/*            )}*/}
+            {/*        </div>*/}
+            {/*    </div>*/}
+            {/*</section>*/}
 
             {/* Technologies Section */}
             <section id="tecnologias" className="py-20 bg-white">
