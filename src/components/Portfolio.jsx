@@ -39,7 +39,7 @@ import {
     ChevronRight,
     Building2,
     TrendingUp,
-    Shield, Cpu, ChevronDownIcon
+    Shield, Cpu, ChevronDownIcon, FolderOpen
 } from "lucide-react";
 import mockData from "../data/mock";
 import {apiService} from "@/services/api";
@@ -491,7 +491,7 @@ const Portfolio = () => {
                                 <span className="block text-orange-500">Full Stack</span>
                             </h1>
                             <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-                                Líder Técnico especializado em soluções web escaláveis e metodologias ágeis.
+                                A solução que seu projeto precisa, com a empresa que você <b>confia</b>
                             </p>
                             <div className="flex flex-col sm:flex-row gap-4">
                                 <Button
@@ -500,13 +500,6 @@ const Portfolio = () => {
                                 >
                                     <MessageCircle className="mr-2 h-5 w-5"/>
                                     Solicitar Orçamento
-                                </Button>
-                                <Button
-                                    variant="outline"
-                                    className="border-gray-400 text-white hover:bg-white hover:text-gray-900 px-8 py-3 rounded-lg font-semibold"
-                                >
-                                    <Github className="mr-2 h-5 w-5"/>
-                                    Ver Projetos
                                 </Button>
                             </div>
                         </div>
@@ -532,12 +525,15 @@ const Portfolio = () => {
                             Sobre Mim
                         </h2>
                         <div className="w-20 h-1 bg-orange-500 mx-auto"></div>
+                        <p className="text-lg text-gray-600 max-w-2xl mx-auto mt-3 mb-6">
+                            Um pouco sobre minha trajetória, experiências e um pouco sobre <span className="text-orange-500">Yorramn</span>!
+                        </p>
                     </div>
 
                     <div className="grid md:grid-cols-2 gap-12 items-baseline text-justify">
                         <div>
                             <div className="flex items-center mb-6">
-                                <User className="h-8 w-8 text-orange-500 mr-3"/>
+                            <User className="h-8 w-8 text-orange-500 mr-3"/>
                                 <h3 className="text-2xl font-bold text-gray-800">Quem Sou</h3>
                             </div>
                             <div className="space-y-4 text-gray-600 leading-relaxed">
@@ -574,6 +570,96 @@ const Portfolio = () => {
                                     resolvido, dentro do quê é necessário para você.
                                 </p>
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="projetos" className="py-20 bg-gray-900">
+                <div className="max-w-6xl mx-auto px-6">
+                    <div
+                        className="relative isolate overflow-hidden bg-gray-800 px-6 pt-16 rounded-3xl after:pointer-events-none after:absolute after:inset-0 after:ring-2 after:ring-white/10 sm:px-16 md:pt-24 lg:flex lg:gap-x-20 lg:px-24 lg:pt-0">
+                        {/* Background Gradient */}
+                        <svg
+                            viewBox="0 0 1024 1024"
+                            aria-hidden="true"
+                            className="absolute top-1/2 left-1/2 -z-10 h-64 w-64 -translate-y-1/2 [mask-image:radial-gradient(closest-side,white,transparent)] sm:left-full sm:-ml-80 lg:left-1/2 lg:ml-0 lg:-translate-x-1/2 lg:translate-y-0"
+                        >
+                            <circle r={512} cx={512} cy={512} fill="url(#gradient)" fillOpacity="0.7"/>
+                            <defs>
+                                <radialGradient id="gradient">
+                                    <stop stopColor="#EA580C"/>
+                                    <stop offset={1} stopColor="#DC2626"/>
+                                </radialGradient>
+                            </defs>
+                        </svg>
+
+                        {/* Content */}
+                        <div className="mx-auto max-w-md text-center lg:mx-0 lg:flex-auto lg:py-32 lg:text-left">
+                            <div className="flex items-center justify-center lg:justify-start mb-6">
+                                <FolderOpen className="h-8 w-8 text-orange-500 mr-3"/>
+                                <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+                                    Projetos Incríveis
+                                </h2>
+                            </div>
+
+                            <h3 className="text-2xl font-semibold text-balance text-white mb-4">
+                                Em breve, uma galeria dos meus melhores trabalhos
+                            </h3>
+
+                            <p className="mt-4 text-justify text-lg text-pretty text-gray-300 leading-relaxed">
+                                Estou preparando uma seleção especial dos projetos mais relevantes que desenvolvi.
+                                Cada caso representa uma solução única, com tecnologias modernas e foco em resultados.
+                            </p>
+
+                            <div className="mt-8 space-y-4 text-gray-300">
+                                <div className="flex items-center">
+                                    <CheckCircle className="h-5 w-5 text-orange-500 mr-3"/>
+                                    <span>Projetos completos com stack tecnológica</span>
+                                </div>
+                                <div className="flex items-center">
+                                    <CheckCircle className="h-5 w-5 text-orange-500 mr-3"/>
+                                    <span>Cases de sucesso e métricas reais</span>
+                                </div>
+                                <div className="flex items-center">
+                                    <CheckCircle className="h-5 w-5 text-orange-500 mr-3"/>
+                                    <span>Detalhes técnicos e processo de desenvolvimento</span>
+                                </div>
+                            </div>
+
+                            <div className="mt-10 flex items-center justify-center gap-x-6 lg:justify-start">
+                                <button
+                                    onClick={openWhatsApp}
+                                    className="flex items-center bg-orange-600 hover:bg-orange-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors duration-200"
+                                >
+                                    <MessageCircle className="mr-2 h-5 w-5"/>
+                                    Solicitar Orçamento
+                                </button>
+                                <a
+                                    href="#contato"
+                                    className="text-sm font-semibold text-white hover:text-orange-300 transition-colors duration-200"
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        document.querySelector('#contato')?.scrollIntoView({behavior: 'smooth'});
+                                    }}
+                                >
+                                    Ver disponibilidade
+                                    <span aria-hidden="true" className="ml-1">→</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        {/* Preview Image */}
+                        <div className="relative mt-16 h-64 lg:mt-8 lg:h-80 lg:flex-1">
+                            <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center">
+                                <div className="text-center text-gray-400">
+                                    <FolderOpen className="h-16 w-16 mx-auto mb-4 text-orange-500"/>
+                                    <p className="text-lg font-semibold">Galeria em Construção</p>
+                                    <p className="text-sm mt-2">Novos projetos chegando em breve</p>
+                                </div>
+                            </div>
+                            <div
+                                className="absolute inset-0 bg-gradient-to-r from-transparent via-gray-800/50 to-gray-800 rounded-3xl"></div>
                         </div>
                     </div>
                 </div>
@@ -666,74 +752,134 @@ const Portfolio = () => {
             {/*</section>*/}
 
             {/* Technologies Section */}
-            <section id="tecnologias" className="py-20 bg-white">
+            <section id="tecnologias" className="py-20 bg-gray-50">
                 <div className="max-w-6xl mx-auto px-6">
-                    <div className="text-center mb-12">
+                    <div className="text-center mb-16">
                         <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
-                            Tecnologias
+                            Tecnologias & Ferramentas
                         </h2>
+                        <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-6">
+                            Domínio completo do ecossistema de desenvolvimento moderno
+                        </p>
                         <div className="w-20 h-1 bg-orange-500 mx-auto"></div>
                     </div>
 
-                    <div className="grid md:grid-cols-4 gap-8">
-                        <div className="text-center">
-                            <div
-                                className="bg-orange-100 rounded-full p-6 w-24 h-24 mx-auto mb-4 flex items-center justify-center">
-                                <Code className="h-12 w-12 text-orange-600"/>
+                    <div
+                        className="relative isolate overflow-hidden bg-white/80 backdrop-blur-sm px-8 py-12 rounded-3xl shadow-lg border border-white/20">
+                        {/* Background Gradient */}
+                        <svg
+                            viewBox="0 0 1024 1024"
+                            aria-hidden="true"
+                            className="absolute top-1/2 left-1/2 -z-10 h-64 w-64 -translate-y-1/2 [mask-image:radial-gradient(closest-side,white,transparent)] opacity-50"
+                        >
+                            <circle r={512} cx={512} cy={512} fill="url(#tech-gradient)" fillOpacity="0.6"/>
+                            <defs>
+                                <radialGradient id="tech-gradient">
+                                    <stop stopColor="#3B82F6"/>
+                                    <stop offset={1} stopColor="#10B981"/>
+                                </radialGradient>
+                            </defs>
+                        </svg>
+
+                        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10">
+                            {/* Backend */}
+                            <div className="group text-center">
+                                <div className="relative">
+                                    <div
+                                        className="bg-gradient-to-br from-orange-500 to-red-500 rounded-2xl p-8 w-32 h-32 mx-auto mb-6 flex items-center justify-center transform group-hover:scale-105 transition-all duration-300 shadow-lg">
+                                        <Code className="h-16 w-16 text-white"/>
+                                    </div>
+                                    <div
+                                        className="absolute -inset-4 bg-orange-100 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></div>
+                                </div>
+                                <h3 className="text-xl font-bold text-gray-800 mb-6">Backend</h3>
+                                <div className="flex flex-wrap justify-center gap-3">
+                                    {mockData.technologies.backend.map((tech, index) => (
+                                        <span
+                                            key={index}
+                                            className="bg-white/80 backdrop-blur-sm border border-orange-200 text-orange-700 px-3 py-1.5 rounded-full text-sm font-medium shadow-sm hover:shadow-md transition-shadow duration-200"
+                                        >
+                                {tech}
+                            </span>
+                                    ))}
+                                </div>
                             </div>
-                            <h3 className="text-xl font-bold text-gray-800 mb-4">Backend</h3>
-                            <div className="flex flex-wrap justify-center gap-2">
-                                {mockData.technologies.backend.map((tech, index) => (
-                                    <Badge key={index} variant="outline" className="border-orange-300 text-orange-700">
-                                        {tech}
-                                    </Badge>
-                                ))}
+
+                            {/* Frontend */}
+                            <div className="group text-center">
+                                <div className="relative">
+                                    <div
+                                        className="bg-gradient-to-br from-blue-500 to-cyan-500 rounded-2xl p-8 w-32 h-32 mx-auto mb-6 flex items-center justify-center transform group-hover:scale-105 transition-all duration-300 shadow-lg">
+                                        <Globe className="h-16 w-16 text-white"/>
+                                    </div>
+                                    <div
+                                        className="absolute -inset-4 bg-blue-100 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></div>
+                                </div>
+                                <h3 className="text-xl font-bold text-gray-800 mb-6">Frontend</h3>
+                                <div className="flex flex-wrap justify-center gap-3">
+                                    {mockData.technologies.frontend.map((tech, index) => (
+                                        <span
+                                            key={index}
+                                            className="bg-white/80 backdrop-blur-sm border border-blue-200 text-blue-700 px-3 py-1.5 rounded-full text-sm font-medium shadow-sm hover:shadow-md transition-shadow duration-200"
+                                        >
+                                {tech}
+                            </span>
+                                    ))}
+                                </div>
+                            </div>
+
+                            {/* Dados */}
+                            <div className="group text-center">
+                                <div className="relative">
+                                    <div
+                                        className="bg-gradient-to-br from-green-500 to-emerald-500 rounded-2xl p-8 w-32 h-32 mx-auto mb-6 flex items-center justify-center transform group-hover:scale-105 transition-all duration-300 shadow-lg">
+                                        <Database className="h-16 w-16 text-white"/>
+                                    </div>
+                                    <div
+                                        className="absolute -inset-4 bg-green-100 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></div>
+                                </div>
+                                <h3 className="text-xl font-bold text-gray-800 mb-6">Dados</h3>
+                                <div className="flex flex-wrap justify-center gap-3">
+                                    {mockData.technologies.database.map((tech, index) => (
+                                        <span
+                                            key={index}
+                                            className="bg-white/80 backdrop-blur-sm border border-green-200 text-green-700 px-3 py-1.5 rounded-full text-sm font-medium shadow-sm hover:shadow-md transition-shadow duration-200"
+                                        >
+                                {tech}
+                            </span>
+                                    ))}
+                                </div>
+                            </div>
+
+                            {/* Ferramentas */}
+                            <div className="group text-center">
+                                <div className="relative">
+                                    <div
+                                        className="bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl p-8 w-32 h-32 mx-auto mb-6 flex items-center justify-center transform group-hover:scale-105 transition-all duration-300 shadow-lg">
+                                        <Cpu className="h-16 w-16 text-white"/>
+                                    </div>
+                                    <div
+                                        className="absolute -inset-4 bg-purple-100 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></div>
+                                </div>
+                                <h3 className="text-xl font-bold text-gray-800 mb-6">Ferramentas</h3>
+                                <div className="flex flex-wrap justify-center gap-3">
+                                    {mockData.technologies.tools.map((tech, index) => (
+                                        <span
+                                            key={index}
+                                            className="bg-white/80 backdrop-blur-sm border border-purple-200 text-purple-700 px-3 py-1.5 rounded-full text-sm font-medium shadow-sm hover:shadow-md transition-shadow duration-200"
+                                        >
+                                {tech}
+                            </span>
+                                    ))}
+                                </div>
                             </div>
                         </div>
 
-                        <div className="text-center">
-                            <div
-                                className="bg-blue-100 rounded-full p-6 w-24 h-24 mx-auto mb-4 flex items-center justify-center">
-                                <Globe className="h-12 w-12 text-blue-600"/>
-                            </div>
-                            <h3 className="text-xl font-bold text-gray-800 mb-4">Frontend</h3>
-                            <div className="flex flex-wrap justify-center gap-2">
-                                {mockData.technologies.frontend.map((tech, index) => (
-                                    <Badge key={index} variant="outline" className="border-blue-300 text-blue-700">
-                                        {tech}
-                                    </Badge>
-                                ))}
-                            </div>
-                        </div>
-
-                        <div className="text-center">
-                            <div
-                                className="bg-green-100 rounded-full p-6 w-24 h-24 mx-auto mb-4 flex items-center justify-center">
-                                <Database className="h-12 w-12 text-green-600"/>
-                            </div>
-                            <h3 className="text-xl font-bold text-gray-800 mb-4">Dados</h3>
-                            <div className="flex flex-wrap justify-center gap-2">
-                                {mockData.technologies.database.map((tech, index) => (
-                                    <Badge key={index} variant="outline" className="border-green-300 text-green-700">
-                                        {tech}
-                                    </Badge>
-                                ))}
-                            </div>
-                        </div>
-
-                        <div className="text-center">
-                            <div
-                                className="bg-yellow-100 rounded-full p-6 w-24 h-24 mx-auto mb-4 flex items-center justify-center">
-                                <Cpu className="h-12 w-12 text-yellow-600"/>
-                            </div>
-                            <h3 className="text-xl font-bold text-gray-800 mb-4">Tecnologias</h3>
-                            <div className="flex flex-wrap justify-center gap-2">
-                                {mockData.technologies.tools.map((tech, index) => (
-                                    <Badge key={index} variant="outline" className="border-yellow-300 text-yellow-700">
-                                        {tech}
-                                    </Badge>
-                                ))}
-                            </div>
+                        {/* Footer Note */}
+                        <div className="text-center mt-12 pt-8 border-t border-gray-200/50">
+                            <p className="text-gray-600 text-sm">
+                                + outras tecnologias e frameworks especializados
+                            </p>
                         </div>
                     </div>
                 </div>
