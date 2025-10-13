@@ -44,6 +44,7 @@ import {
 import mockData from "../data/mock";
 import {apiService} from "@/services/api";
 import * as emailjs from "@emailjs/browser";
+import Nav from "@/components/Nav";
 
 const Portfolio = () => {
     const [formData, setFormData] = useState({
@@ -434,46 +435,54 @@ const Portfolio = () => {
         return classes.filter(Boolean).join(' ')
     }
 
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [selectedOption, setSelectedOption] = useState('');
+
+    const handleSelectChange = (e) => {
+        const value = e.target.value;
+        setSelectedOption(value);
+        if (value) {
+            const element = document.querySelector(value);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+            // Reset select after navigation
+            setTimeout(() => setSelectedOption(''), 500);
+        }
+    };
+
+    const menuItems = [
+        { href: "#sobre", label: "Sobre" },
+        { href: "#projetos", label: "Projetos" },
+        { href: "#tecnologias", label: "Tecnologias" },
+        { href: "#companies", label: "Cases" },
+        { href: "#services", label: "Serviços" },
+        { href: "#budget", label: "Como funciona" },
+        { href: "#testimonials", label: "Relatos" },
+        { href: "#contato", label: "Contato" }
+    ];
+
+    const dropdownItems = [
+        { href: "#projetos", label: "Projetos" },
+        { href: "#tecnologias", label: "Tecnologias" },
+        { href: "#companies", label: "Cases" },
+        { href: "#services", label: "Serviços" }
+    ];
+
+    const handleNavClick = (href) => {
+        const element = document.querySelector(href);
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+        }
+        setIsMenuOpen(false);
+    };
+
     return (
         <div className="min-h-screen bg-gray-50">
-            <header className="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-40">
-                <nav className="max-w-6xl mx-auto px-6 py-4">
-                    <div className="flex justify-between items-center">
-                        <div className="text-2xl font-bold text-gray-800">
-                            Yorramn
-                        </div>
-                        <div className="hidden md:flex space-x-8">
-                            <a href="#sobre" className="text-gray-600 hover:text-orange-600 transition-colors">
-                                Sobre
-                            </a>
-                            {/*<a href="#projetos" className="text-gray-600 hover:text-orange-600 transition-colors">*/}
-                            {/*    Projetos*/}
-                            {/*</a>*/}
-                            <a href="#tecnologias" className="text-gray-600 hover:text-orange-600 transition-colors">
-                                Tecnologias
-                            </a>
-                            <a href="#companies" className="text-gray-600 hover:text-orange-600 transition-colors">
-                                Cases
-                            </a>
-                            <a href="#services" className="text-gray-600 hover:text-orange-600 transition-colors">
-                                Serviços
-                            </a>
-                            <a href="#budget" className="text-gray-600 hover:text-orange-600 transition-colors">
-                                Como funciona
-                            </a>
-                            <a href="#testimonials" className="text-gray-600 hover:text-orange-600 transition-colors">
-                                Relatos
-                            </a>
-                            <a href="#contato" className="text-gray-600 hover:text-orange-600 transition-colors">
-                                Contato
-                            </a>
-                        </div>
-                    </div>
-                </nav>
-            </header>
+            <Nav/>
 
             {/* Hero Section */}
-            <section className="bg-gradient-to-br from-gray-900 to-gray-800 text-white py-20">
+            <section className="bg-gradient-to-br from-gray-900 to-gray-800 text-white py-20" id="home">
                 <div className="max-w-6xl mx-auto px-6">
                     <div className="flex flex-col md:flex-row items-center gap-12">
                         <div className="flex-1">
@@ -745,7 +754,7 @@ const Portfolio = () => {
 
                     {/* Trust Metrics */}
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
-                    <div className="text-center">
+                        <div className="text-center">
                             <div className="text-3xl font-bold text-orange-600 mb-2">5+</div>
                             <div className="text-gray-600">Empresas Atendidas</div>
                         </div>
@@ -861,7 +870,8 @@ const Portfolio = () => {
                         </h2>
                         <div className="w-20 h-1 bg-orange-500 mx-auto mb-6"></div>
                         <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                            Soluções completas em desenvolvimento e gestão de projetos com foco em <span className="text-orange-500">qualidade e
+                            Soluções completas em desenvolvimento e gestão de projetos com foco em <span
+                            className="text-orange-500">qualidade e
                             resultados</span>
                         </p>
                     </div>
@@ -875,8 +885,10 @@ const Portfolio = () => {
                                 </div>
                                 <h3 className="text-xl font-bold text-gray-800 mb-3">Desenvolvimento</h3>
                                 <p className="text-gray-600 text-justify">
-                                    Desenvolvimento de aplicações web e multiplataforma completas, utilizando as melhores tecnologias do
-                                    mercado como PHP, Laravel, JavaScript, Angular, bancos de dados robustos e quais mais <span className="text-orange-500">você precisar</span>.
+                                    Desenvolvimento de aplicações web e multiplataforma completas, utilizando as
+                                    melhores tecnologias do
+                                    mercado como PHP, Laravel, JavaScript, Angular, bancos de dados robustos e quais
+                                    mais <span className="text-orange-500">você precisar</span>.
                                 </p>
                             </CardContent>
                             <CardFooter className="text-center flex justify-center">
@@ -899,7 +911,8 @@ const Portfolio = () => {
                                 <h3 className="text-xl font-bold text-gray-800 mb-3">Liderança Técnica</h3>
                                 <p className="text-gray-600 text-justify">
                                     Liderança de equipes de desenvolvimento, definição de arquiteturas e implementação
-                                    de boas práticas para garantir a qualidade do código, além de mentoria em decisões estruturais em projetos já existentes.
+                                    de boas práticas para garantir a qualidade do código, além de mentoria em decisões
+                                    estruturais em projetos já existentes.
                                 </p>
                             </CardContent>
                             <CardFooter className="text-center flex justify-center">
@@ -922,7 +935,8 @@ const Portfolio = () => {
                                 <h3 className="text-xl font-bold text-gray-800 mb-3">Micro Projetos</h3>
                                 <p className="text-gray-600 text-justify">
                                     Desenvolvimento rápido de funcionalidades específicas, APIs, integrações e soluções
-                                    pontuais com foco em agilidade e eficiência. Ideal para demandas que exigem mais agilidade, ex: <span className="text-orange-500">Wordpress e CMS's</span> no geral.
+                                    pontuais com foco em agilidade e eficiência. Ideal para demandas que exigem mais
+                                    agilidade, ex: <span className="text-orange-500">Wordpress e CMS's</span> no geral.
                                 </p>
                             </CardContent>
                             <CardFooter className="text-center flex justify-center">
@@ -1038,7 +1052,8 @@ const Portfolio = () => {
                                         </div>
                                         <p className="text-gray-600 text-sm">
                                             Conversamos sobre suas necessidades, objetivos do projeto e expectativas.
-                                            Esta etapa é inteiramente necessária para entender quais serão as necessidades do projeto.
+                                            Esta etapa é inteiramente necessária para entender quais serão as
+                                            necessidades do projeto.
                                         </p>
                                     </div>
                                 </div>
@@ -1277,7 +1292,8 @@ const Portfolio = () => {
                                         className="mt-2 border-gray-300 focus:border-orange-500 focus:ring-orange-500"
                                         placeholder="Descreva seu projeto ou necessidade..."
                                     />
-                                    <p className="text-gray-400 italic">Descreva brevemente alguns detalhes sobre seu projeto</p>
+                                    <p className="text-gray-400 italic">Descreva brevemente alguns detalhes sobre seu
+                                        projeto</p>
                                 </div>
 
                                 <Button
