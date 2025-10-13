@@ -49,14 +49,14 @@ const mockData = {
     {
       author: "Leticia S. Silva",
       position: "CEO - Galactus",
-      content: "Yorram demonstrou excepcional liderança técnica em nossos projetos mais complexos. Sua capacidade de implementar soluções escaláveis e gerenciar equipes de desenvolvimento é impressionante. Recomendo fortemente seus serviços.",
+      content: "Yorramn demonstrou excepcional liderança técnica em nossos projetos mais complexos. Sua capacidade de implementar soluções escaláveis e gerenciar equipes de desenvolvimento é impressionante. Recomendo fortemente seus serviços.",
       rating: 5,
       company: "Galactus"
     },
     {
       author: "Julia A. Mota",
       position: "CEO - Juliamota Designs",
-      content: "Trabalhar com Yorram foi uma experiência fantástica. Ele conseguiu entregar nossa plataforma no prazo, com qualidade excepcional e seguindo todas as melhores práticas de desenvolvimento. Um profissional exemplar.",
+      content: "Trabalhar com Yorramn foi uma experiência fantástica. Ele conseguiu entregar nossa plataforma no prazo, com qualidade excepcional e seguindo todas as melhores práticas de desenvolvimento. Um profissional exemplar.",
       rating: 5,
       company: "Juliamota Designs"
     }
