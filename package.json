@@ -5,6 +5,7 @@
   "description": "Site institucional estatico da Yorramn Dev",
   "scripts": {
     "start": "node server.js",
-    "build": "node build.js"
+    "build": "node build.js",
+    "build-craco": "node build.js"
   }
 }
