@@ -26,6 +26,7 @@ const closeMenu = () => {
   navigation.classList.remove("open");
   document.body.classList.remove("menu-open");
   menuButton.setAttribute("aria-expanded", "false");
+  menuButton.setAttribute("aria-label", "Abrir menu");
 };
 
 menuButton.addEventListener("click", () => {
@@ -33,6 +34,11 @@ menuButton.addEventListener("click", () => {
   navigation.classList.toggle("open", willOpen);
   document.body.classList.toggle("menu-open", willOpen);
   menuButton.setAttribute("aria-expanded", String(willOpen));
+  menuButton.setAttribute("aria-label", willOpen ? "Fechar menu" : "Abrir menu");
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") closeMenu();
 });
 
 document.querySelectorAll('a[href^="#"]').forEach((link) => {
