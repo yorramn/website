@@ -115,7 +115,7 @@ form?.addEventListener("submit", async (event) => {
     await window.emailjs.send("service_33xj1o7", "template_ao8fmjx", {
       to_name: "Gabriel Yorramn",
       from_name: data.get("name"),
-      message: `Nome do cliente: ${data.get("name")}\nE-mail: ${data.get("email")}\nTelefone: ${data.get("phone")}\nServiço: ${data.get("service") || "Não especificado"}\n\nMensagem: ${data.get("message")}`,
+      message: `Nome do cliente: ${data.get("name")}\nPerfil do lead: ${data.get("lead_type") || "Não especificado"}\nE-mail: ${data.get("email")}\nTelefone: ${data.get("phone")}\nServiço: ${data.get("service") || "Não especificado"}\n\nMensagem: ${data.get("message")}`,
       to_email: "bielyorramn@gmail.com",
       reply_to: data.get("email")
     });
