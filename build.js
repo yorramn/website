@@ -30,8 +30,15 @@ const htmlFiles = [path.join(output, "index.html"), ...[...pages.keys()].map((re
 for (const htmlFile of htmlFiles) {
   const html = fs.readFileSync(htmlFile, "utf8");
   const requiredOnce = [/<title>/g, /<h1(?:\s|>)/g, /name="description"/g, /rel="canonical"/g];
+  const socialImageTags = [
+    /property="og:image" content="https:\/\/yorramn\.dev\.br\/assets\/logoverde_1\.jpg"/g,
+    /property="og:image:secure_url" content="https:\/\/yorramn\.dev\.br\/assets\/logoverde_1\.jpg"/g,
+    /property="og:image:type" content="image\/jpeg"/g,
+    /name="twitter:image" content="https:\/\/yorramn\.dev\.br\/assets\/logoverde_1\.jpg"/g
+  ];
   if (html.includes('<div id="root">')) throw new Error(`Contêiner legado do React encontrado em ${htmlFile}`);
   if (requiredOnce.some((pattern) => (html.match(pattern) || []).length !== 1)) throw new Error(`Estrutura SEO inválida em ${htmlFile}`);
+  if (socialImageTags.some((pattern) => (html.match(pattern) || []).length !== 1)) throw new Error(`Metadados de imagem social inválidos em ${htmlFile}`);
 }
 
 console.log(`Site gerado em ${output} com ${pages.size + 1} páginas HTML.`);
