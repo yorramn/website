@@ -1,4 +1,5 @@
-const whatsappUrl = "https://api.whatsapp.com/send/?phone=5511989416584&text=Ol%C3%A1%2C+gostaria+de+fazer+um+or%C3%A7amento.&type=phone_number&app_absent=0";
+const whatsappUrl = "/whatsapp";
+const whatsappDestination = "https://wa.me/5511989416584";
 const analyticsHead = `<meta property="og:image:width" content="9170"><meta property="og:image:height" content="2635"><meta property="og:image:alt" content="Yorramn Dev - Código que vira solução"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://yorramn.dev.br/assets/logo-principal.png"><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-WXBP2PXV');</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-7EYE9E4F6D"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-7EYE9E4F6D');</script>`;
 
 const services = [
@@ -8,7 +9,7 @@ const services = [
     title: "Desenvolvimento de Sistemas Web sob Medida",
     description: "Desenvolvimento de sistemas web, portais e painéis personalizados para automatizar processos e apoiar o crescimento da sua empresa.",
     eyebrow: "Software pensado para a sua operação",
-    headline: "Um sistema que trabalha do jeito que sua empresa precisa.",
+    headline: "Desenvolvimento de sistemas web sob medida para a sua empresa.",
     lead: "Transformo processos manuais, planilhas e regras específicas do seu negócio em uma plataforma segura, simples de usar e preparada para evoluir.",
     intent: "Quero desenvolver um sistema web sob medida.",
     situations: ["Sua equipe depende de planilhas e tarefas repetitivas", "Soluções prontas não atendem às regras do negócio", "Informações importantes estão espalhadas em várias ferramentas", "Você precisa ganhar produtividade sem perder controle"],
@@ -31,7 +32,7 @@ const services = [
     title: "Criação de Sites, Landing Pages e E-commerce",
     description: "Sites profissionais, landing pages e lojas virtuais rápidas, responsivas e orientadas a conversão para atrair clientes e vender mais.",
     eyebrow: "Presença digital que gera oportunidade",
-    headline: "Seu site precisa ser bonito. E também precisa trazer resultado.",
+    headline: "Criação de sites, landing pages e e-commerce que geram resultados.",
     lead: "Crio experiências digitais rápidas, responsivas e alinhadas à sua marca para transformar visitas em contatos, orçamentos e vendas.",
     intent: "Quero criar um site, landing page ou e-commerce.",
     situations: ["Sua empresa ainda não transmite confiança no ambiente digital", "Você investe em anúncios, mas a página não converte", "O site é lento ou difícil de usar no celular", "Você quer começar ou profissionalizar suas vendas online"],
@@ -54,7 +55,7 @@ const services = [
     title: "Consultoria e Arquitetura de Software",
     description: "Consultoria tecnológica para validar ideias, planejar produtos, escolher arquitetura e reduzir riscos antes ou durante o desenvolvimento.",
     eyebrow: "Decisões técnicas com contexto de negócio",
-    headline: "Clareza para construir certo antes de gastar duas vezes.",
+    headline: "Consultoria e arquitetura de software para decisões mais seguras.",
     lead: "Ajudo sua empresa a transformar uma ideia ou desafio técnico em um plano viável, com prioridades, arquitetura e próximos passos compreensíveis.",
     intent: "Preciso de consultoria ou arquitetura de software.",
     situations: ["Você tem uma ideia, mas ainda não sabe como transformá-la em produto", "O projeto começou sem uma direção técnica clara", "A equipe precisa escolher entre diferentes arquiteturas", "Custos, prazo ou complexidade estão fugindo do controle"],
@@ -77,7 +78,7 @@ const services = [
     title: "Refatoração de Sistemas Legados",
     description: "Refatoração de sistemas legados, correção de performance, segurança, arquitetura e sustentação para evoluir software com menos risco.",
     eyebrow: "Evolução sem apagar o que já funciona",
-    headline: "Seu sistema não precisa ser refeito para voltar a evoluir.",
+    headline: "Refatoração de sistemas legados para voltar a evoluir.",
     lead: "Investigo gargalos e dívida técnica para modernizar a aplicação por etapas, reduzindo falhas, lentidão e medo de colocar novas funções em produção.",
     intent: "Quero avaliar ou refatorar um sistema existente.",
     situations: ["Cada alteração gera novos erros ou demora demais", "O sistema apresenta lentidão, indisponibilidade ou falhas recorrentes", "Tecnologias antigas dificultam contratação e manutenção", "O crescimento aumentou riscos no banco de dados e na infraestrutura"],
@@ -131,9 +132,23 @@ function contactPage() {
   return `${baseHead({ title: "Contato para Desenvolvimento de Software", description: "Conte sua ideia ou desafio de software. Solicite uma conversa sobre sistemas web, sites, e-commerce, consultoria ou refatoração.", path, schema })}<body class="inner-page contact-page"><a class="skip-link" href="#conteudo">Ir para o conteúdo</a>${header()}<main id="conteudo"><section class="contact-page-section"><div class="container contact-page-grid"><div class="contact-intro"><nav class="breadcrumbs" aria-label="Navegação estrutural"><a href="/">Início</a><span>/</span><span>Contato</span></nav><p class="eyebrow">Vamos conversar?</p><h1>Conte sua ideia do seu jeito.</h1><p>Você não precisa escrever um briefing perfeito ou conhecer a tecnologia certa. Explique o cenário e eu retorno para fazermos as perguntas necessárias juntos.</p><ul><li>Diagnóstico inicial claro</li><li>Conversa sem compromisso</li><li>Resposta diretamente com o especialista</li></ul><a class="service-whatsapp" href="${whatsappUrl.replaceAll("&", "&amp;")}" target="_blank" rel="noopener noreferrer">${icons.whatsapp} Prefere WhatsApp? Fale comigo</a></div><form class="contact-form" id="contact-form"><input type="hidden" id="service" name="service" value=""><div class="form-context" id="form-context" hidden><span>Assunto selecionado</span><strong id="form-context-label"></strong></div><div class="form-row"><label for="name">Como posso te chamar?<input id="name" name="name" type="text" autocomplete="name" required placeholder="Seu nome"></label><label for="email">Seu melhor e-mail<input id="email" name="email" type="email" autocomplete="email" required placeholder="voce@empresa.com.br"></label></div><label for="phone">WhatsApp ou telefone<input id="phone" name="phone" type="tel" autocomplete="tel" required placeholder="(11) 99999-9999"></label><label for="message">O que você gostaria de resolver?<textarea id="message" name="message" rows="6" required placeholder="Ex.: tenho uma ideia de sistema, mas ainda não sei como começar..."></textarea></label><button class="button form-submit" type="submit">Enviar minha mensagem <span aria-hidden="true">→</span></button><small>Seus dados serão usados apenas para responder a este contato.</small></form></div></section></main>${footer()}${floating()}<div class="toast" id="form-toast" role="status" aria-live="polite" aria-atomic="true"><span class="toast-icon" aria-hidden="true"></span><div><strong id="toast-title"></strong><p id="toast-message"></p></div><button type="button" aria-label="Fechar aviso">&times;</button></div><script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script><script src="/script.js" defer></script></body></html>`;
 }
 
+function successPage() {
+  const path = "/solicitacao-recebida/";
+  const title = "Solicitação Recebida com Sucesso";
+  const description = "Sua solicitação foi recebida pela Yorramn Dev. Em breve entrarei em contato para conversar sobre o seu projeto.";
+  return `<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${title} | Yorramn Dev</title><meta name="description" content="${description}"><meta name="robots" content="noindex, nofollow"><meta name="theme-color" content="#171225"><link rel="canonical" href="https://yorramn.dev.br${path}"><link rel="icon" type="image/png" href="/assets/favicon.png"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="/styles.css"><link rel="stylesheet" href="/styles-overrides.css"><link rel="stylesheet" href="/pages.css"><meta property="og:type" content="website"><meta property="og:locale" content="pt_BR"><meta property="og:url" content="https://yorramn.dev.br${path}"><meta property="og:title" content="${title} | Yorramn Dev"><meta property="og:description" content="${description}"><meta property="og:image" content="https://yorramn.dev.br/assets/logo-principal.png">${analyticsHead}</head><body class="success-page"><main class="success-shell"><section class="success-card" aria-labelledby="success-title"><a href="/" class="success-brand" aria-label="Yorramn Dev, início"><img src="/assets/logobranco.png" alt="Yorramn Dev" width="230" height="66"></a><span class="success-icon" aria-hidden="true">✓</span><p class="eyebrow">Mensagem enviada</p><h1 id="success-title">Solicitação Recebida com Sucesso!</h1><p>Obrigado pelo contato. Em breve entrarei em contato para conversarmos sobre o seu projeto.</p><a class="button" href="/">Voltar para a Home <span aria-hidden="true">→</span></a></section></main></body></html>`;
+}
+
+function whatsappRedirectPage() {
+  const path = "/whatsapp";
+  return `<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Redirecionando para o WhatsApp | Yorramn Dev</title><meta name="description" content="Redirecionamento para o atendimento da Yorramn Dev pelo WhatsApp."><meta name="robots" content="noindex, nofollow"><meta name="theme-color" content="#171225"><link rel="canonical" href="https://yorramn.dev.br${path}"><link rel="icon" type="image/png" href="/assets/favicon.png"><meta http-equiv="refresh" content="0;url=${whatsappDestination}"><link rel="stylesheet" href="/styles.css"><link rel="stylesheet" href="/pages.css"></head><body class="redirect-page"><main><h1>Redirecionando para o WhatsApp</h1><p>Se o redirecionamento não acontecer, <a href="${whatsappDestination}">clique aqui para iniciar a conversa</a>.</p></main><script>window.location.replace(${JSON.stringify(whatsappDestination)});</script></body></html>`;
+}
+
 function generatedPages() {
   const pages = new Map(services.map((service) => [`servicos/${service.slug}/index.html`, servicePage(service)]));
   pages.set("contato/index.html", contactPage());
+  pages.set("solicitacao-recebida/index.html", successPage());
+  pages.set("whatsapp/index.html", whatsappRedirectPage());
   return pages;
 }
 

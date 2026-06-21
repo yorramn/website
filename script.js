@@ -120,7 +120,7 @@ form?.addEventListener("submit", async (event) => {
       reply_to: data.get("email")
     });
     form.reset();
-    showToast("success", "Mensagem enviada", "Obrigado! Retornarei em breve.");
+    window.location.assign("/solicitacao-recebida/");
   } catch (error) {
     console.error("Falha ao enviar o formulário:", error);
     showToast("error", "Não foi possível enviar", "Tente novamente ou fale comigo pelo WhatsApp.");

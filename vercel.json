@@ -3,6 +3,13 @@
   "framework": null,
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
+  "redirects": [
+    {
+      "source": "/whatsapp",
+      "destination": "https://wa.me/5511989416584",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     {
       "source": "/contato/:path*",

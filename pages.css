@@ -62,5 +62,16 @@
 .form-context span,.form-context strong { display: block; }
 .form-context span { color: #746d79; font-size: 9px; text-transform: uppercase; }
 .form-context strong { margin-top: 3px; font: 700 12px Sora,sans-serif; }
+.success-page { min-height: 100vh; background: radial-gradient(circle at 50% 20%,rgba(36,20,85,.9),transparent 44%),var(--black); }
+.success-shell { min-height: 100vh; display: grid; place-items: center; padding: 40px 20px; }
+.success-card { width: min(100%,700px); padding: 48px; border: 1px solid rgba(244,241,234,.13); border-radius: 24px; background: rgba(23,18,37,.88); box-shadow: 0 35px 80px rgba(0,0,0,.32); text-align: center; }
+.success-brand { display: inline-block; margin-bottom: 38px; }
+.success-brand img { width: 190px; height: auto; }
+.success-icon { width: 62px; height: 62px; display: grid; place-items: center; margin: 0 auto 26px; border-radius: 50%; background: rgba(0,231,165,.13); color: var(--accent); font: 800 28px Sora,sans-serif; box-shadow: 0 0 0 9px rgba(0,231,165,.05); }
+.success-card h1 { margin-bottom: 20px; font-size: clamp(36px,6vw,58px); }
+.success-card > p:not(.eyebrow) { max-width: 570px; margin: 0 auto 32px; color: #c0b9c6; }
+.redirect-page { min-height: 100vh; display: grid; place-items: center; padding: 30px; background: var(--black); color: var(--paper); text-align: center; }
+.redirect-page h1 { font-size: clamp(30px,5vw,48px); }
+.redirect-page a { color: var(--accent); text-decoration: underline; }
 @media(max-width:900px){.service-hero-grid,.split-heading,.faq-layout,.contact-page-grid{grid-template-columns:1fr;gap:50px}.deliverables-grid{grid-template-columns:repeat(2,1fr)}.mini-process{grid-template-columns:1fr}.related-services .container{align-items:flex-start;flex-direction:column}.related-services .container>div{justify-content:flex-start}}
-@media(max-width:600px){.service-hero,.contact-page-section{padding:105px 0 70px}.breadcrumbs{margin-bottom:35px}.service-hero h1,.contact-intro h1{font-size:39px}.service-actions{align-items:stretch;flex-direction:column}.service-actions .button{width:100%}.service-whatsapp{justify-content:center}.contact-page .service-whatsapp{width:100%}.page-section{padding:72px 0}.deliverables-grid{grid-template-columns:1fr}.deliverables-grid article{min-height:230px}.faq-list details p{padding-right:0}.page-cta{padding:75px 0}.page-cta .button{width:100%}}
+@media(max-width:600px){.service-hero,.contact-page-section{padding:105px 0 70px}.breadcrumbs{margin-bottom:35px}.service-hero h1,.contact-intro h1{font-size:39px}.service-actions{align-items:stretch;flex-direction:column}.service-actions .button{width:100%}.service-whatsapp{justify-content:center}.contact-page .service-whatsapp{width:100%}.page-section{padding:72px 0}.deliverables-grid{grid-template-columns:1fr}.deliverables-grid article{min-height:230px}.faq-list details p{padding-right:0}.page-cta{padding:75px 0}.page-cta .button{width:100%}.success-card{padding:34px 22px}.success-card .button{width:100%}}
