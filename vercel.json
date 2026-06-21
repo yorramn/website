@@ -2,5 +2,15 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": null,
   "buildCommand": "npm run build",
-  "outputDirectory": "dist"
+  "outputDirectory": "dist",
+  "rewrites": [
+    {
+      "source": "/contato/:path*",
+      "destination": "/contato/index.html"
+    },
+    {
+      "source": "/servicos/:slug/:path*",
+      "destination": "/servicos/:slug/index.html"
+    }
+  ]
 }

@@ -23,6 +23,12 @@
 .whatsapp-float svg { width: 33px; height: 33px; fill: currentColor; stroke: none; }
 .contact-whatsapp { width: fit-content; margin-top: 30px; }
 .contact-whatsapp svg { width: 22px; height: 22px; flex: none; }
+.service-item strong { display: inline-block; margin-top: 12px; color: var(--accent); font: 700 10px Sora,sans-serif; letter-spacing: .02em; }
+.service-item:hover h3 { color: var(--accent); }
+.home-contact-cta { background: linear-gradient(135deg,var(--violet),var(--ink)); }
+.home-contact-cta .container { display: flex; align-items: center; justify-content: space-between; gap: 55px; }
+.home-contact-cta h2 { max-width: 760px; margin: 0; font-size: clamp(31px,4vw,48px); line-height: 1.15; letter-spacing: -.04em; }
+.home-contact-cta .button { flex: none; }
 
 .hero-visual { position: relative; width: min(100%,650px); justify-self: end; }
 .hero-showcase { position: relative; display: grid; place-items: center; min-height: 520px; isolation: isolate; }
@@ -80,6 +86,7 @@
   .hero-showcase { min-height: 470px; }
   .showcase-frame { width: 105%; margin-right: 0; }
   .about-mark { width: min(100%,520px); min-height: 560px; margin-inline: auto; }
+  .home-contact-cta .container { align-items: flex-start; flex-direction: column; }
 
   .site-header,
   .site-header.scrolled {
@@ -178,6 +185,7 @@
   .about-mark > p { left: 28px; right: 28px; bottom: 27px; font-size: 16px; }
   .about-accent { left: -5px; top: 62px; height: 68px; }
   .contact-whatsapp { width: 100%; }
+  .home-contact-cta .button { width: 100%; }
   .toast { left: 14px; right: 14px; max-width: none; transform: translateY(-130%); }
   .toast.show { transform: none; }
 }
